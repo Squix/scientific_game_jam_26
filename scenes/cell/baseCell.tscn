@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bop0fnb6wga8f"]
+
+[ext_resource type="Script" uid="uid://xojj2ia4gnhh" path="res://script/cell/baseCell.gd" id="1_6ooed"]
+[ext_resource type="ArrayMesh" uid="uid://cqor3wmfno20x" path="res://Assets/mesh/groundMeshBase.tres" id="3_wh54q"]
+
+[node name="BaseCell" type="Node3D" unique_id=1993624794]
+script = ExtResource("1_6ooed")
+
+[node name="offset" type="Node3D" parent="." unique_id=609599000]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
+
+[node name="scale" type="Node3D" parent="offset" unique_id=2138179222]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+
+[node name="ground" type="MeshInstance3D" parent="offset" unique_id=15466168]
+mesh = ExtResource("3_wh54q")
