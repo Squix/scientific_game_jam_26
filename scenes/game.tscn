@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://doy0waosju62a" path="res://script/playerInput.gd" id="1_lnu2h"]
 [ext_resource type="Script" uid="uid://btl7inol7jdgb" path="res://script/map.gd" id="1_uwrxv"]
-[ext_resource type="Script" uid="uid://cs488lmt1w238" path="res://script/playerPhase.gd" id="1_yqjtg"]
+[ext_resource type="Script" uid="uid://23jvbo5minnk" path="res://script/gameManager.gd" id="2_lnu2h"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8cj0n"]
 
@@ -16,12 +16,11 @@ sky = SubResource("Sky_8cj0n")
 [node name="Game" type="Node3D" unique_id=586767268]
 
 [node name="PlayerInput" type="Node" parent="." unique_id=806826451]
+unique_name_in_owner = true
 script = ExtResource("1_lnu2h")
 
-[node name="Sequence" type="Node" parent="." unique_id=1760328605]
-
-[node name="PlayerPhase" type="Node" parent="Sequence" unique_id=83167491]
-script = ExtResource("1_yqjtg")
+[node name="gameManager" type="Node" parent="." unique_id=1760328605]
+script = ExtResource("2_lnu2h")
 
 [node name="MainCamera" type="Camera3D" parent="." unique_id=1192955099]
 unique_name_in_owner = true
