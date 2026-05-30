@@ -15,6 +15,9 @@ load_path = "res://.godot/imported/Tool_Arrosoir.png-d39556d092d45b29ac0aeefd687
 [sub_resource type="LabelSettings" id="LabelSettings_5en4g"]
 font_size = 32
 
+[sub_resource type="LabelSettings" id="LabelSettings_75u2n"]
+font_size = 48
+
 [node name="UI" type="Control" unique_id=979071823]
 layout_mode = 3
 anchors_preset = 15
@@ -207,6 +210,15 @@ horizontal_alignment = 1
 [node name="Label" type="Label" parent="GameLost/CenterContainer/Panel/MarginContainer/VBoxContainer" unique_id=1359535400]
 layout_mode = 2
 text = "The ouro branche beat you!"
+
+[node name="ScoreLabel" type="Label" parent="." unique_id=2132654117]
+layout_mode = 0
+offset_left = 103.0
+offset_top = 112.0
+offset_right = 227.0
+offset_bottom = 135.0
+text = "Colza restant : 0"
+label_settings = SubResource("LabelSettings_75u2n")
 
 [connection signal="pressed" from="CenterContainer/MarginContainer/NextTurn" to="." method="_on_next_turn_pressed"]
 [connection signal="toggled" from="Tools/HBoxContainer/WatteringCan" to="." method="_on_wattering_can_toggled"]

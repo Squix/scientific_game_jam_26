@@ -5,6 +5,7 @@ enum tool {none,watteringCan,magnifyingGlass,scythe,tree}
 
 signal no_actions_left
 signal parasite_cut
+signal colza_cut
 
 @onready var map : Map = %Map
 
@@ -32,6 +33,7 @@ func useTreeAt(_cell:Cell):
 
 func useScytheAt(_cell:Cell):
 	_cell.CutColza()
+	colza_cut.emit()
 	if _cell.state == Cell.CellState.containParasite:
 		parasite_cut.emit()
 

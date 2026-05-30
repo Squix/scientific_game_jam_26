@@ -5,6 +5,7 @@ extends Node
 
 signal parasite_dead
 signal parasite_turn_ended
+signal parasite_cut_colza
 
 # le colza ne doit pas être mort ni cut
 @export var spreadRules = {
@@ -29,6 +30,8 @@ func start_turn():
 	#kill current_cell if healthy
 	if current_cell.state == Cell.CellState.containParasite:
 		current_cell.KillColza()
+		parasite_cut_colza.emit()
+		
 	#duplicate into adjacent_cell
 	var target = _get_target_cell()
 	if not target:

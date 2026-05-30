@@ -7,6 +7,7 @@ signal start_parasite_turn
 signal start_player_turn
 signal game_won()
 signal game_lost()
+signal score_updated(new_score:int)
 
 @onready var map := %Map
 
@@ -14,8 +15,12 @@ signal game_lost()
 
 var currentState: state = state.PlayerTurn
 
+var score = 0
+
 func _ready() -> void:
 	init_game.emit()
+	var new_score = map.width * map.height
+	score_updated.emit(new_score)
 	StartPlayerTurn()
 
 func advanceState():
@@ -63,3 +68,11 @@ func _on_parasite_parasite_turn_ended() -> void:
 
 func _on_player_parasite_cut() -> void:
 	game_won.emit()
+
+
+func _on_player_colza_cut() -> void:
+	score_updated.emit(len(map.getAliveCells()))
+
+
+func _on_parasite_parasite_cut_colza() -> void:
+	score_updated.emit(len(map.getAliveCells()))

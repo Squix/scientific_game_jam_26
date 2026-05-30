@@ -6,6 +6,7 @@ extends Node
 @onready var gameLostUI := $GameLost
 @onready var nextTurnButton := $CenterContainer/MarginContainer/NextTurn
 @onready var toolsUI := $Tools
+@onready var scoreLabel := $ScoreLabel
 
 signal newToolSelected(newTool:  Player.tool)
 signal nextTurnPressed()
@@ -54,3 +55,7 @@ func _on_player_no_actions_left() -> void:
 
 func _on_game_start_player_turn() -> void:
 	toolsUI.show()
+
+
+func _on_game_score_updated(new_score: int) -> void:
+	scoreLabel.text = "Remaining colza: {0}".format([new_score])
