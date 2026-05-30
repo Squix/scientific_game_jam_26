@@ -45,8 +45,12 @@ func _on_game_game_lost() -> void:
 func _on_game_init_game() -> void:
 	gameLostUI.hide()
 	gameWonUI.hide()
-	toolsUI.show()
+	toolsUI.show() 
 
 
 func _on_player_no_actions_left() -> void:
 	toolsUI.hide()
+
+
+func _on_game_start_player_turn() -> void:
+	toolsUI.show()
