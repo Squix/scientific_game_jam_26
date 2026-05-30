@@ -3,9 +3,11 @@ extends Node
 
 @onready var field : Map = %Map
 
+signal parasite_dead
+
 @export var spreadRules = {
 	"waterLevel":1,
-	"sunLevel":1,
+	"sunLevel":2,
 	"soilLevel":2
 }
 
@@ -24,8 +26,12 @@ func start_turn():
 	#kill current_cell
 	current_cell.KillColza()
 	#duplicate into adjacent_cell
-	var target := _get_target_cell()
-	target.set_state(Cell.CellState.containParasite)
+	var target = _get_target_cell()
+	if not target:
+		push_error("No valid cells for spreading, game won!")
+		parasite_dead.emit()
+		return
+	(target as Cell).set_state(Cell.CellState.containParasite)
 	current_cell = target
 
 func end_turn():
@@ -35,13 +41,14 @@ func end_turn():
 func _on_game_manager_init_game() -> void:
 	_spawn_parasite()
 
-func _get_target_cell() -> Cell:
+func _get_target_cell() -> Variant:
 	#get adjacent cells to current_cell
 	var adjacent_cells = field.getAdjacentCellsTo(current_cell)
 	print("cells", adjacent_cells.map(func(c: Cell):return "name: {0},soilLevel: {1},sunLevel: {2},waterLevel: {3}".format([c.name, c.soilLevel, c.sunLevel, c.waterLevel])))
 	#filter to keep good ones
 	var valid_cells = adjacent_cells.filter(func(c : Cell):
 		return c.soilLevel == spreadRules["soilLevel"] && c.waterLevel == spreadRules["waterLevel"] && c.sunLevel == spreadRules["sunLevel"]  )
-	print("validCells", valid_cells)
 	#random select between good ones
+	if len(valid_cells == 0):
+		return null
 	return valid_cells.pick_random()
