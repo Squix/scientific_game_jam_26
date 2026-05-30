@@ -39,6 +39,10 @@ func initCell():
 func updateWaterLevel(_change:int):
 	waterLevel += _change
 	waterLevel = clamp(waterLevel,1,2)
+	if(waterLevel == 2):
+		ground.mesh = groundMeshWet
+	else :
+		ground.mesh = groundMeshBase
 	
 func updateSoilLevel(_change:int):
 	soilLevel += _change

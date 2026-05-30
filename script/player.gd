@@ -48,9 +48,6 @@ func onMapClicked(_worldPosition:Vector3):
 
 func useWatteringCanAt(_cell:Cell):
 	_cell.updateWaterLevel(1)
-	var adjacentCells: Array[Cell] = map.getAdjacentCellsTo(_cell)
-	for _adjacentCell in adjacentCells :
-		_adjacentCell.updateWaterLevel(1)
 
 func useMagnifyingGlassAt(_cell:Cell):
 	pass
