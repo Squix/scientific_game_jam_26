@@ -240,11 +240,10 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 3.9983778, 1.9073486e-0
 
 [connection signal="game_lost" from="." to="UI" method="_on_game_game_lost"]
 [connection signal="game_won" from="." to="UI" method="_on_game_game_won"]
+[connection signal="init_game" from="." to="Parasite" method="_on_game_manager_init_game"]
 [connection signal="init_game" from="." to="Map" method="_on_game_init_game"]
 [connection signal="init_game" from="." to="UI" method="_on_game_init_game"]
-[connection signal="init_game" from="." to="Parasite" method="_on_game_manager_init_game"]
 [connection signal="start_parasite_turn" from="." to="Parasite" method="start_turn"]
 [connection signal="parasite_dead" from="Parasite" to="." method="_on_parasite_parasite_dead"]
 [connection signal="parasite_turn_ended" from="Parasite" to="." method="_on_parasite_parasite_turn_ended"]
-[connection signal="newToolSelected" from="UI" to="." method="_on_ui_new_tool_selected"]
-[connection signal="nextTurnPressed" from="UI" to="." method="_on_ui_next_turn_pressed"]
+[connection signal="newToolSelected" from="UI" to="Player" method="_on_ui_new_tool_selected"]

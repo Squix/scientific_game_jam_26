@@ -28,3 +28,7 @@ func _input(event):
 func onClick(_position: Vector2):
 	map_clicked.emit(mouseWorldPos)
 	
+
+
+func _on_ui_new_tool_selected(newTool: Player.tool) -> void:
+	pass # Replace with function body.
