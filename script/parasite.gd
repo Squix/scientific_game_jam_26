@@ -18,7 +18,7 @@ func _spawn_parasite():
 	#get field
 	#get a random cell
 	#change state of this random cell
-	var random_cell : Cell = field.getCellUnsafe(randi_range(0, field.width), randi_range(0, field.height))
+	var random_cell : Cell = field.getCellUnsafe(randi_range(0, field.width-1), randi_range(0, field.height-1))
 	random_cell.set_state(Cell.CellState.containParasite)
 	current_cell = random_cell
 	
