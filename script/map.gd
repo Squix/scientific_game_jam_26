@@ -2,7 +2,7 @@ class_name Map
 extends Node3D
 
 var mapArray: Array[Cell]
-var width: int = 9
+var width: int = 5
 var height: int = 7
 
 var cellScene = preload("res://scenes/cell.tscn")
