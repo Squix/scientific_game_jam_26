@@ -10,6 +10,7 @@ func initCell():
 	updateGround()
 	
 func updateGround():
+	
 	pass
 
 func updateContent():

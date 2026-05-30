@@ -11,6 +11,11 @@ var fieldPos : Dictionary[String, int] = {"x":0, "z":0}
 @onready var colza_dead = $offset/scale/Colza_Dead
 @onready var colza_cut = $offset/scale/Colza_Cut
 
+@onready var ground : MeshInstance3D = $offset/ground
+
+var groundMeshBase = preload("res://Assets/mesh/groundMeshBase.tres")
+var groundMeshWet = preload("res://Assets/mesh/groundMeshWet.tres")
+
 func set_state(new_state: CellState):
 	if(new_state == CellState.containParasite):
 		print("Cell {0} contient le parasite".format([name]))
@@ -34,6 +39,10 @@ func initCell():
 func updateWaterLevel(_change:int):
 	waterLevel += _change
 	waterLevel = clamp(waterLevel,1,2)
+	if(waterLevel == 2):
+		ground.mesh = groundMeshWet
+	else :
+		ground.mesh = groundMeshBase
 	
 func updateSoilLevel(_change:int):
 	soilLevel += _change
@@ -42,7 +51,8 @@ func updateSoilLevel(_change:int):
 func updateSunLevel(_change:int):
 	sunLevel += _change
 	sunLevel = clamp(sunLevel,1,2)
-	
+
+
 	
 func KillColza():
 	set_state(CellState.dead)

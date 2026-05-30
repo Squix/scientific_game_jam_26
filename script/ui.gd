@@ -22,8 +22,8 @@ func _on_tree_toggled(toggled_on: bool) -> void:
 		newToolSelected.emit( Player.tool.tree)
 
 func _on_scythe_toggled(toggled_on: bool) -> void:
-		if(toggled_on):
-			newToolSelected.emit( Player.tool.scythe)
+	if(toggled_on):
+		newToolSelected.emit( Player.tool.scythe)
 
 func _on_next_turn_pressed() -> void:
 	nextTurnPressed.emit()
