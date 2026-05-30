@@ -1,10 +1,10 @@
 class_name Player
 extends Node
 
-enum tool {none,watteringCan,magnifyingGlass,tree}
+enum tool {none,watteringCan,magnifyingGlass,scythe,tree}
 
 
-@onready var field : Map = %Map
+@onready var map : Map = %Map
 
 const actionPerPhase = 1
 var remainingAction = 0
@@ -35,16 +35,31 @@ func onMapClicked(_worldPosition:Vector3):
 	match currentTool:
 		Player.tool.none:
 			pass
+		Player.tool.scythe:
+			useScytheAt(cell)
 		Player.tool.watteringCan:
-			
-			pass
+			useWatteringCanAt(cell)
 		Player.tool.magnifyingGlass:
-			pass
+			useMagnifyingGlassAt(cell)
 		Player.tool.tree:
-			pass
+			useTreeAt(cell)
 	
 	remainingAction -= 1
-	
+
+func useWatteringCanAt(_cell:Cell):
+	_cell.updateWaterLevel(1)
+	var adjacentCells: Array[Cell] = map.getAdjacentCellsTo(_cell)
+	for _adjacentCell in adjacentCells :
+		_adjacentCell.updateWaterLevel(1)
+
+func useMagnifyingGlassAt(_cell:Cell):
+	pass
+
+func useTreeAt(_cell:Cell):
+	pass
+
+func useScytheAt(_cell:Cell):
+	_cell.CutColza()
 
 func _on_ui_new_tool_selected(newTool: Player.tool) -> void:
 	currentTool = newTool

@@ -31,8 +31,18 @@ func initCell():
 	soilLevel = randi_range(1,2)
 	sunLevel = 2
 
-func _ready() -> void:
-	pass
+func updateWaterLevel(_change:int):
+	waterLevel += _change
+	waterLevel = clamp(waterLevel,1,2)
+	
+func updateSoilLevel(_change:int):
+	soilLevel += _change
+	soilLevel = clamp(soilLevel,1,2)
+	
+func updateSunLevel(_change:int):
+	sunLevel += _change
+	sunLevel = clamp(sunLevel,1,2)
+	
 	
 func KillColza():
 	set_state(CellState.dead)
