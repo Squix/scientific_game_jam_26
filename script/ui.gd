@@ -55,6 +55,9 @@ func _on_player_no_actions_left() -> void:
 
 
 func _on_game_start_player_turn() -> void:
+	var pressedButton = $Tools/HBoxContainer/WatteringCan.button_group.get_pressed_button()
+	if(pressedButton):
+		pressedButton.set_pressed_no_signal(false)
 	toolsUI.show()
 
 

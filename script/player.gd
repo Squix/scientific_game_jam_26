@@ -19,6 +19,7 @@ func start_turn():
 	remainingAction = actionPerPhase
 
 func end_turn():
+	currentTool = Player.tool.none
 	pass
 
 
