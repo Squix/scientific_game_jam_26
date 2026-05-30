@@ -3,6 +3,7 @@ class_name UI
 extends Node
 
 @onready var gameWonUI := $GameWon
+@onready var gameLostUI := $GameLost
 @onready var nextTurnButton := $CenterContainer/MarginContainer/NextTurn
 
 signal newToolSelected(newTool:  Player.tool)
@@ -22,7 +23,7 @@ func _on_tree_toggled(toggled_on: bool) -> void:
 
 func _on_scythe_toggled(toggled_on: bool) -> void:
 		if(toggled_on):
-		newToolSelected.emit( Player.tool.scythe)
+			newToolSelected.emit( Player.tool.scythe)
 
 func _on_next_turn_pressed() -> void:
 	nextTurnPressed.emit()
@@ -31,3 +32,13 @@ func _on_next_turn_pressed() -> void:
 func _on_game_game_won() -> void:
 	gameWonUI.show()
 	nextTurnButton.hide()
+
+
+func _on_game_game_lost() -> void:
+	gameLostUI.show()
+	nextTurnButton.hide()
+
+
+func _on_game_init_game() -> void:
+		gameLostUI.hide()
+		gameWonUI.hide()
