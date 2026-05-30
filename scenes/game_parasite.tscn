@@ -36,3 +36,4 @@ script = ExtResource("4_n6wg5")
 
 [connection signal="init_game" from="." to="Map" method="_on_game_manager_init_game"]
 [connection signal="init_game" from="." to="Parasite" method="_on_game_manager_init_game"]
+[connection signal="start_parasite_turn" from="." to="Parasite" method="start_turn"]
