@@ -36,6 +36,7 @@ func initCell():
 	waterLevel = 1
 	soilLevel = randi_range(1,2)
 	sunLevel = 2
+	$offset/scale.rotate_y(randf_range(0,180))
 
 func updateWaterLevel(_change:int):
 	waterLevel += _change
