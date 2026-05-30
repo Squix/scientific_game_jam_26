@@ -20,25 +20,27 @@ func set_state(new_state: CellState):
 		debug_mesh.surface_set_material(0, debug_material)
 		(colza_alive.find_child("Colza_BASE") as MeshInstance3D).mesh = debug_mesh
 		
-	state = CellState.containColza
+	state = new_state
 
 var waterLevel: int = 1
 var soilLevel: int = 1
 var sunLevel: int = 1
 
 func initCell():
-	waterLevel = randi_range(1,2)
+	waterLevel = 1
 	soilLevel = randi_range(1,2)
-	sunLevel = randi_range(1,2)
+	sunLevel = 2
 
 func _ready() -> void:
 	pass
 	
 func KillColza():
+	set_state(CellState.dead)
 	colza_alive.hide()
 	colza_dead.show()
 
 func CutColza():
+	set_state(CellState.cut)
 	colza_alive.hide()
 	colza_cut.show()
 	pass
