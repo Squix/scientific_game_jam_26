@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cvki34rwb1qd6"]
+
+[ext_resource type="PackedScene" uid="uid://bmlcpoapg1180" path="res://Assets/Colza_Tile_Dead.glb" id="1_88ci8"]
+
+[node name="ColzaTile" type="Node3D" unique_id=1763606177]
+
+[node name="Colza_Dead" parent="." unique_id=203925551 instance=ExtResource("1_88ci8")]

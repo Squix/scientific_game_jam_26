@@ -4,4 +4,4 @@
 
 [node name="ColzaTile" type="Node3D" unique_id=1763606177]
 
-[node name="TILES" parent="." unique_id=2071553001 instance=ExtResource("1_mn764")]
+[node name="Colza" parent="." unique_id=988545167 instance=ExtResource("1_mn764")]
