@@ -57,6 +57,9 @@ func worldPosToCellCoord(_position: Vector3) -> Vector2i:
 	var localPos = _position -  position
 	return Vector2i(localPos.x,localPos.z)
 
+func getAliveCells() -> Array[Cell]:
+	return mapArray.filter(func(c: Cell): return c.state == Cell.CellState.containColza or c.state == Cell.CellState.containParasite)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	position.x = -width/2
