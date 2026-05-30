@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bik1846wr44cd"]
+
+[ext_resource type="PackedScene" uid="uid://wxx1jgs2ote4" path="res://Assets/Decor_Test.glb" id="1_s8c1j"]
+
+[sub_resource type="Environment" id="Environment_s8c1j"]
+ambient_light_source = 2
+ambient_light_color = Color(0.70352304, 0.7042103, 0.71830916, 1)
+ambient_light_energy = 1.5
+tonemap_mode = 2
+ssao_enabled = true
+ssao_radius = 2.0
+ssao_intensity = 1.0
+ssao_power = 3.0
+adjustment_enabled = true
+
+[node name="Decor" type="Node3D" unique_id=462490557]
+
+[node name="Environment" parent="." unique_id=1409991115 instance=ExtResource("1_s8c1j")]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=716826676]
+transform = Transform3D(-4.371139e-08, -0.9659258, 0.25881907, 0, 0.25881907, 0.9659258, -1, 4.222196e-08, -1.1313341e-08, 7, 23, 0)
+fov = 22.5
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1307371314]
+environment = SubResource("Environment_s8c1j")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=369550765]
+transform = Transform3D(0.06698731, 0.9659258, -0.25000006, -0.25000003, 0.25881907, 0.9330127, 0.9659258, 0, 0.2588191, 0, 3, 0)
+light_energy = 0.5
+shadow_enabled = true
+sky_mode = 1
