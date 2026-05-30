@@ -3,6 +3,7 @@ extends Node
 
 enum tool {none,watteringCan,magnifyingGlass,scythe,tree}
 
+signal no_actions_left
 
 @onready var map : Map = %Map
 
@@ -22,8 +23,8 @@ func end_turn():
 func useWatteringCanAt(_cell:Cell):
 	_cell.updateWaterLevel(1)
 
-func useMagnifyingGlassAt(_cell:Cell):
-	pass
+func useMagnifyingGlassAt(cell:Cell):
+	cell.open_colza()
 
 func useTreeAt(_cell:Cell):
 	pass
@@ -66,3 +67,5 @@ func _on_player_input_map_clicked(_worldPosition: Vector3) -> void:
 			useTreeAt(cell)
 	
 	remainingAction -= 1
+	if(remainingAction <= 0):
+		no_actions_left.emit()

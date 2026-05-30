@@ -5,6 +5,7 @@ extends Node
 @onready var gameWonUI := $GameWon
 @onready var gameLostUI := $GameLost
 @onready var nextTurnButton := $CenterContainer/MarginContainer/NextTurn
+@onready var toolsUI := $Tools
 
 signal newToolSelected(newTool:  Player.tool)
 signal nextTurnPressed()
@@ -31,14 +32,21 @@ func _on_next_turn_pressed() -> void:
 
 func _on_game_game_won() -> void:
 	gameWonUI.show()
+	toolsUI.hide()
 	nextTurnButton.hide()
 
 
 func _on_game_game_lost() -> void:
 	gameLostUI.show()
+	toolsUI.hide()
 	nextTurnButton.hide()
 
 
 func _on_game_init_game() -> void:
-		gameLostUI.hide()
-		gameWonUI.hide()
+	gameLostUI.hide()
+	gameWonUI.hide()
+	toolsUI.show()
+
+
+func _on_player_no_actions_left() -> void:
+	toolsUI.hide()

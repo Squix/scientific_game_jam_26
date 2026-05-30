@@ -10,6 +10,7 @@ var fieldPos : Dictionary[String, int] = {"x":0, "z":0}
 @onready var colza_alive = $offset/scale/Colza
 @onready var colza_dead = $offset/scale/Colza_Dead
 @onready var colza_cut = $offset/scale/Colza_Cut
+@onready var parasite = $offset/scale/Parasite
 
 @onready var ground : MeshInstance3D = $offset/ground
 
@@ -52,7 +53,14 @@ func updateSunLevel(_change:int):
 	sunLevel += _change
 	sunLevel = clamp(sunLevel,1,2)
 
-
+func open_colza():
+	if state == CellState.containColza || CellState.containParasite:
+		if state == CellState.containParasite:
+			parasite.show()
+		(colza_alive.get_node("AnimationPlayer") as AnimationPlayer).play("Opening")
+		await get_tree().create_timer(2.0).timeout
+		(colza_alive.get_node("AnimationPlayer") as AnimationPlayer).play("Closing")
+		parasite.hide()
 	
 func KillColza():
 	set_state(CellState.dead)
