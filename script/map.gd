@@ -7,12 +7,17 @@ var height: int = 10
 
 var cellScene = preload("res://scenes/cell.tscn")
 
-func getCell(_x:int , _z:int) -> Cell:
+func getCellSafe(_x:int , _z:int):
+	if _x >=0 and _x < width and _z >= 0 and _z<height:
+		return mapArray[width*_z + _x]
+	return null
+
+func getCellUnsafe(_x:int , _z:int) -> Cell:
 	return mapArray[width*_z + _x]	
 
 func initMap() -> void:
-	for _x in range(width):
-		for _z in range (height):
+	for _z in range (height):
+		for _x in range(width):
 			mapArray.push_back(instantiateCell(_x,_z))
 
 func instantiateCell (_x:int, _z:int) -> Cell :
@@ -21,13 +26,14 @@ func instantiateCell (_x:int, _z:int) -> Cell :
 	cellInstance.position.z = _z
 	add_child(cellInstance)
 	return cellInstance
-	
+
+func worldPosToCellCoord(_position: Vector3) -> Vector2i:
+	var localPos = _position -  position
+	return Vector2i(localPos.x,ceil(localPos.z))
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	initMap()
+	position.x = -width/2
+	position.z = -height/2
 	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
