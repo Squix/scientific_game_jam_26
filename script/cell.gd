@@ -5,6 +5,10 @@ enum CellState {containColza,containParasite,cut, dead}
 
 var state : CellState = CellState.containColza
 
+@onready var colza_alive = $offset/scale/Colza
+@onready var colza_dead = $offset/scale/Colza_Dead
+@onready var colza_cut = $offset/scale/Colza_Cut
+
 func set_state(new_state: CellState):
 	if(new_state == CellState.containParasite):
 		print("Cell {0} contient le parasite".format([name]))
@@ -23,11 +27,10 @@ func _ready() -> void:
 	pass
 	
 func KillColza():
-	$scale/offset/Colza.visible = false
-	$scale/offset/Colza_Dead.visible = true
-	pass
+	colza_alive.hide()
+	colza_dead.show()
 
 func CutColza():
-	$scale/offset/Colza.visible = false
-	$scale/offset/Colza_Cut.visible= true
+	colza_alive.hide()
+	colza_cut.show()
 	pass
