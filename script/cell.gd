@@ -5,7 +5,7 @@ enum CellState {containColza,containParasite,cut, dead}
 
 var state : CellState = CellState.containColza
 
-var fieldPos : Vector2
+var fieldPos : Dictionary[String, int] = {"x":0, "z":0}
 
 @onready var colza_alive = $offset/scale/Colza
 @onready var colza_dead = $offset/scale/Colza_Dead
