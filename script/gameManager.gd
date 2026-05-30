@@ -12,8 +12,6 @@ signal game_lost()
 
 @export var HEALTHY_FIELD_THRESHOLD = 0.5
 
-const actionPerPhase = 1
-var remainingAction = 0
 var currentState: state = state.PlayerTurn
 
 func _ready() -> void:
@@ -37,18 +35,6 @@ func EndPlayerTurn():
 	advanceState()
 	pass
 
-func onActionTaken():
-	remainingAction -= 1
-	if(remainingAction <= 0):
-		EndPlayerTurn()
-		pass
-
-func onMapClicked(_worldPosition:Vector3):
-	var coord = %Map.worldPosToCellCoord(_worldPosition)
-	var cell : Cell = %Map.getCellSafe(coord.x,coord.y)
-	if(cell):
-		cell.CutColza()
-	onActionTaken()
 
 func StartParasiteTurn():
 	currentState = state.ParasiteTurn
