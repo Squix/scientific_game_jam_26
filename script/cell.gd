@@ -38,7 +38,16 @@ func initCell():
 	waterLevel = 1
 	soilLevel = randi_range(1,2)
 	sunLevel = 2
-	$offset/scale.rotate_y(randf_range(0,180))
+	$offset/scale.rotate_y(randi_range(0,3)*PI/2)
+
+func playWindAnim():
+	if(state == CellState.containColza):
+		var animPlayer = (colza_alive.get_node("AnimationPlayer") as AnimationPlayer)
+		if(animPlayer.current_animation == "Wind" and animPlayer.is_playing()):
+			animPlayer.stop()
+		animPlayer.play("Wind",-1,3,false)
+
+	
 
 func updateWaterLevel(_change:int):
 	waterLevel += _change

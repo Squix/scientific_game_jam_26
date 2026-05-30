@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://b67ag8hpesb3g"]
+
+[ext_resource type="ArrayMesh" uid="uid://3nfpi7tx05sa" path="res://Assets/mesh/Colza_Particle.tres" id="1_e6tml"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e6tml"]
+vertex_color_use_as_albedo = true
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[node name="ColzaCutFx" type="Node3D" unique_id=496716595]
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=955903793]
+material_override = SubResource("StandardMaterial3D_e6tml")
+emitting = false
+amount = 16
+one_shot = true
+explosiveness = 1.0
+mesh = ExtResource("1_e6tml")
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, 1, 0)
+spread = 20.0
+gravity = Vector3(0, -5, 0)
+initial_velocity_min = 3.0
+initial_velocity_max = 4.0
+angular_velocity_min = -360.0
+angular_velocity_max = 360.0
+scale_amount_min = 0.6
+scale_amount_max = 1.1
+anim_speed_min = 50.0
+anim_speed_max = 50.0

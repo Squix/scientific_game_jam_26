@@ -2,8 +2,10 @@ extends Node
 
 var mouseScreenPos: Vector2 = Vector2()
 var mouseWorldPos: Vector3 = Vector3()
+var mouseMapCoord: Vector2i = Vector2i()
 
 signal map_clicked(worldPos:Vector3)
+signal mouseChangedCoord(coords:Vector2i)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,6 +17,13 @@ func _process(delta: float) -> void:
 	var result = getWorldPosFromScreen(mouseScreenPos)
 	if(result):
 		mouseWorldPos = getWorldPosFromScreen(mouseScreenPos)
+		var newMouseCoord = %Map.worldPosToCellCoord(mouseWorldPos)
+		if(newMouseCoord.x != mouseMapCoord.x or newMouseCoord.y != mouseMapCoord.y):
+			mouseMapCoord = newMouseCoord
+			mouseChangedCoord.emit(newMouseCoord)
+			var cell = %Map.getCellSafe(newMouseCoord.x,newMouseCoord.y)
+			if(cell):
+				cell.playWindAnim()
 
 func getWorldPosFromScreen(_position: Vector2):
 	var from = %"MainCamera".project_ray_origin(_position)
