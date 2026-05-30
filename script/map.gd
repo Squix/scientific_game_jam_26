@@ -14,6 +14,20 @@ func getCellSafe(_x:int , _z:int):
 
 func getCellUnsafe(_x:int , _z:int) -> Cell:
 	return mapArray[width*_z + _x]	
+	
+func getAdjacentCellsTo(cell: Cell) -> Array[Variant]:
+	var cell_pos = cell.fieldPos
+	var adjacent_cells = []
+	#up
+	adjacent_cells.append(getCellSafe(cell_pos["x"], cell_pos["z"]-1))
+	#down
+	adjacent_cells.append(getCellSafe(cell_pos["x"], cell_pos["z"]+1))
+	#left
+	adjacent_cells.append(getCellSafe(cell_pos["x"]-1, cell_pos["z"]))
+	#right
+	adjacent_cells.append(getCellSafe(cell_pos["x"]+1, cell_pos["z"]))
+	
+	return adjacent_cells.filter(func(c): return c is Cell)
 
 func _initMap() -> void:
 	for _z in range (height):
