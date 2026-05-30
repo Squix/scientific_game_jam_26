@@ -3,6 +3,13 @@ extends Node3D
 
 enum CellState {containColza,containParasite,cut, dead}
 
+var state : CellState = CellState.containColza
+
+func set_state(new_state: CellState):
+	if(new_state == CellState.containParasite):
+		print("Cell {0} contient le parasite".format([name]))
+	state = CellState.containColza
+
 var waterLevel: int = 1
 var soilLevel: int = 1
 var sunLevel: int = 1
