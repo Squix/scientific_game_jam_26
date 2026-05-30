@@ -32,10 +32,11 @@ func _spawn_parasite():
 func start_turn():
 	print("Parasite turn")
 	#kill current_cell if healthy
-	if current_cell.state == Cell.CellState.containParasite:
+	if current_cell.state == Cell.CellState.containParasite && current_cell.waterLevel < 2:
 		current_cell.KillColza()
 		parasite_cut_colza.emit()
-		
+	else:
+		current_cell.state = Cell.CellState.containColza
 	#duplicate into adjacent_cell
 	var target = _get_target_cell()
 	if not target:
