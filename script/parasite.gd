@@ -41,10 +41,6 @@ func start_turn():
 func end_turn():
 	parasite_turn_ended.emit()
 
-
-func _on_game_manager_init_game() -> void:
-	_spawn_parasite()
-
 func _get_target_cell() -> Variant:
 	#get adjacent cells to current_cell
 	var adjacent_cells = field.getAdjacentCellsTo(current_cell)
@@ -61,3 +57,7 @@ func _get_target_cell() -> Variant:
 	if len(valid_cells) == 0:
 		return null
 	return valid_cells.pick_random()
+
+
+func _on_map_map_initialized() -> void:
+	_spawn_parasite()

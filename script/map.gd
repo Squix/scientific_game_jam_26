@@ -1,6 +1,8 @@
 class_name Map
 extends Node3D
 
+signal map_initialized
+
 var mapArray: Array[Cell]
 var width: int = 5
 var height: int = 7
@@ -43,6 +45,7 @@ func _initMap() -> void:
 	for _z in range (height):
 		for _x in range(width):
 			mapArray.push_back(instantiateCell(_x,_z))
+	map_initialized.emit()
 
 func instantiateCell (_x:int, _z:int) -> Cell :
 	var cellInstance : Cell = cellScene.instantiate()
