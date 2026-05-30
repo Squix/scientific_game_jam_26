@@ -1,8 +1,10 @@
-[gd_scene format=3 uid="uid://y7h2gyhro86k"]
+[gd_scene format=3 uid="uid://mucg007wo82o"]
 
 [ext_resource type="Script" uid="uid://cim2bdpsb24l" path="res://script/ui.gd" id="1_dj8aq"]
 [ext_resource type="Texture2D" uid="uid://c6y3bqnbtbd41" path="res://Assets/UI_Tools.png" id="2_75u2n"]
+[ext_resource type="FontFile" uid="uid://04okbdwpd8us" path="res://fonts/TrashHand.TTF" id="2_aputy"]
 [ext_resource type="Texture2D" uid="uid://d0sh8u8jw1gch" path="res://Assets/Tool_Arbre.png" id="2_ro3t7"]
+[ext_resource type="Texture2D" uid="uid://bd3wvtvucu8ji" path="res://Assets/UI_Frame_Arrow.png" id="2_w7enk"]
 [ext_resource type="Texture2D" uid="uid://df65whowndxex" path="res://Assets/Tool_Arrosoir_selected.png" id="3_3wlde"]
 [ext_resource type="Texture2D" uid="uid://0al8rxdneri2" path="res://Assets/Tool_Loupe.png" id="3_75u2n"]
 [ext_resource type="Texture2D" uid="uid://ghthwir6i4it" path="res://Assets/Tool_Arrosoir.png" id="3_w7enk"]
@@ -10,6 +12,13 @@
 [ext_resource type="Texture2D" uid="uid://ci8v3fcnor4sf" path="res://Assets/Tool_Loupe_selected.png" id="5_24e4x"]
 [ext_resource type="Texture2D" uid="uid://c22rdsfkgs2e" path="res://Assets/Tool_Faux_selected.png" id="8_ukj8e"]
 [ext_resource type="Texture2D" uid="uid://bvolun812r6y0" path="res://Assets/UI_Frame.png" id="9_ukj8e"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_aputy"]
+texture = ExtResource("2_w7enk")
+expand_margin_left = 30.0
+expand_margin_top = 30.0
+expand_margin_right = 50.0
+expand_margin_bottom = 30.0
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_dj8aq"]
 resource_name = "Tool"
@@ -19,6 +28,13 @@ texture = ExtResource("9_ukj8e")
 
 [sub_resource type="LabelSettings" id="LabelSettings_5en4g"]
 font_size = 32
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7paak"]
+texture = ExtResource("9_ukj8e")
+expand_margin_left = 40.0
+expand_margin_top = 40.0
+expand_margin_right = 40.0
+expand_margin_bottom = 40.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_75u2n"]
 font_size = 24
@@ -39,7 +55,7 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -83.0
+offset_left = -249.0
 offset_top = -200.0
 grow_horizontal = 0
 grow_vertical = 0
@@ -50,8 +66,14 @@ theme_override_constants/margin_right = 50
 
 [node name="NextTurn" type="Button" parent="CenterContainer/MarginContainer" unique_id=661208156]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_aputy")
 theme_override_font_sizes/font_size = 32
-text = "Next turn"
+theme_override_styles/normal = SubResource("StyleBoxTexture_aputy")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_aputy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_aputy")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_aputy")
+theme_override_styles/focus = SubResource("StyleBoxTexture_aputy")
+text = "NEXT TURN"
 
 [node name="Tools" type="Control" parent="." unique_id=39683947]
 layout_mode = 1
@@ -232,6 +254,7 @@ offset_left = 103.0
 offset_top = 112.0
 offset_right = 227.0
 offset_bottom = 135.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_7paak")
 text = "Colza restant : 0"
 label_settings = SubResource("LabelSettings_75u2n")
 
