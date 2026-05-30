@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://y7h2gyhro86k"]
+[gd_scene format=3 uid="uid://bbyl5w1wccr3a"]
 
 [ext_resource type="Script" uid="uid://cim2bdpsb24l" path="res://script/ui.gd" id="1_dj8aq"]
 [ext_resource type="Texture2D" uid="uid://d0sh8u8jw1gch" path="res://Assets/Tool_Arbre.png" id="2_ro3t7"]
@@ -9,6 +9,9 @@ resource_name = "Tool"
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5en4g"]
 load_path = "res://.godot/imported/Tool_Arrosoir.png-d39556d092d45b29ac0aeefd687c259e.ctex"
+
+[sub_resource type="LabelSettings" id="LabelSettings_5en4g"]
+font_size = 32
 
 [node name="UI" type="Control" unique_id=979071823]
 layout_mode = 3
@@ -85,6 +88,47 @@ theme_override_constants/margin_right = 50
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Next turn"
+
+[node name="GameWon" type="Control" parent="." unique_id=1045635620]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="GameWon" unique_id=624630472]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="GameWon/CenterContainer" unique_id=1652986114]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="GameWon/CenterContainer/Panel" unique_id=94266173]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameWon/CenterContainer/Panel/MarginContainer" unique_id=1935850183]
+layout_mode = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="GameWon/CenterContainer/Panel/MarginContainer/VBoxContainer" unique_id=1308980190]
+layout_mode = 2
+text = "GAME WON!"
+label_settings = SubResource("LabelSettings_5en4g")
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="GameWon/CenterContainer/Panel/MarginContainer/VBoxContainer" unique_id=545045687]
+layout_mode = 2
+text = "You beated the ouro-branche!"
 
 [connection signal="toggled" from="HBoxContainer/WatteringCan" to="." method="_on_wattering_can_toggled"]
 [connection signal="toggled" from="HBoxContainer/MagnifyingGlass" to="." method="_on_magnifying_glass_toggled"]

@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://23jvbo5minnk" path="res://script/gameManager.gd" id="2_n7a5f"]
 [ext_resource type="Script" uid="uid://btl7inol7jdgb" path="res://script/map.gd" id="3_xcjxa"]
 [ext_resource type="Script" uid="uid://ckftm1acmnpy3" path="res://script/parasite.gd" id="4_n6wg5"]
+[ext_resource type="PackedScene" uid="uid://bbyl5w1wccr3a" path="res://scenes/UI.tscn" id="5_xcjxa"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8cj0n"]
 
@@ -34,6 +35,11 @@ script = ExtResource("3_xcjxa")
 [node name="Parasite" type="Node" parent="." unique_id=1560733485]
 script = ExtResource("4_n6wg5")
 
-[connection signal="init_game" from="." to="Map" method="_on_game_manager_init_game"]
+[node name="UI" parent="." unique_id=979071823 instance=ExtResource("5_xcjxa")]
+
+[connection signal="game_won" from="." to="UI" method="_on_game_game_won"]
+[connection signal="init_game" from="." to="Map" method="_on_game_init_game"]
 [connection signal="init_game" from="." to="Parasite" method="_on_game_manager_init_game"]
 [connection signal="start_parasite_turn" from="." to="Parasite" method="start_turn"]
+[connection signal="parasite_dead" from="Parasite" to="." method="_on_parasite_parasite_dead"]
+[connection signal="nextTurnPressed" from="UI" to="." method="_on_ui_next_turn_pressed"]

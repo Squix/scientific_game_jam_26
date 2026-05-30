@@ -5,6 +5,8 @@ enum state {PlayerTurn, ParasiteTurn, GameOver}
 signal init_game
 signal start_parasite_turn
 signal start_player_turn
+signal game_won()
+signal game_lost()
 
 const actionPerPhase = 1
 var remainingAction = 0
@@ -56,3 +58,7 @@ func EndParasiteTurn():
 func _on_ui_next_turn_pressed() -> void:
 	EndPlayerTurn()
 	pass # Replace with function body.
+
+
+func _on_parasite_parasite_dead() -> void:
+	game_won.emit()
