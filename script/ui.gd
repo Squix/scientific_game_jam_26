@@ -6,6 +6,7 @@ extends Node
 @onready var gameLostUI := $GameLost
 @onready var nextTurnButton := $CenterContainer/MarginContainer/NextTurn
 @onready var toolsUI := $Tools
+@onready var watteringCanIcon : TextureButton = toolsUI.get_node("HBoxContainer/WatteringCan")
 @onready var scoreLabel := $ScoreLabel
 
 signal newToolSelected(newTool:  Player.tool)
