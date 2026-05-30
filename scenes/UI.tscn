@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://y7h2gyhro86k"]
+
+[ext_resource type="Script" uid="uid://cim2bdpsb24l" path="res://script/ui.gd" id="1_dj8aq"]
+[ext_resource type="Texture2D" uid="uid://d0sh8u8jw1gch" path="res://Assets/Tool_Arbre.png" id="2_ro3t7"]
+[ext_resource type="Texture2D" uid="uid://ba62fhdis2m83" path="res://Assets/Tool_Engrais.png" id="3_75u2n"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_dj8aq"]
+resource_name = "Tool"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5en4g"]
+load_path = "res://.godot/imported/Tool_Arrosoir.png-d39556d092d45b29ac0aeefd687c259e.ctex"
+
+[node name="UI" type="Control" unique_id=979071823]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dj8aq")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=508946268]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -200.0
+offset_right = 100.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="WatteringCan" type="TextureButton" parent="HBoxContainer" unique_id=449805837]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_vertical = 4
+toggle_mode = true
+button_group = SubResource("ButtonGroup_dj8aq")
+texture_normal = SubResource("CompressedTexture2D_5en4g")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="MagnifyingGlass" type="TextureButton" parent="HBoxContainer" unique_id=1703804396]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+toggle_mode = true
+button_group = SubResource("ButtonGroup_dj8aq")
+texture_normal = ExtResource("3_75u2n")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Tree" type="TextureButton" parent="HBoxContainer" unique_id=807550207]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_vertical = 4
+toggle_mode = true
+button_group = SubResource("ButtonGroup_dj8aq")
+texture_normal = ExtResource("2_ro3t7")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1617306652]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -83.0
+offset_top = -200.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer" unique_id=545634203]
+layout_mode = 2
+theme_override_constants/margin_right = 50
+
+[node name="NextTurn" type="Button" parent="CenterContainer/MarginContainer" unique_id=661208156]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Next turn"
+
+[connection signal="toggled" from="HBoxContainer/WatteringCan" to="." method="_on_wattering_can_toggled"]
+[connection signal="toggled" from="HBoxContainer/MagnifyingGlass" to="." method="_on_magnifying_glass_toggled"]
+[connection signal="toggled" from="HBoxContainer/Tree" to="." method="_on_tree_toggled"]
+[connection signal="pressed" from="CenterContainer/MarginContainer/NextTurn" to="." method="_on_next_turn_pressed"]
