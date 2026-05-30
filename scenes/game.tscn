@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://doy0waosju62a" path="res://script/playerInput.gd" id="1_lnu2h"]
 [ext_resource type="Script" uid="uid://btl7inol7jdgb" path="res://script/map.gd" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://23jvbo5minnk" path="res://script/gameManager.gd" id="2_lnu2h"]
+[ext_resource type="Script" uid="uid://dttmrad5rr8lc" path="res://script/player.gd" id="3_iywne"]
+[ext_resource type="PackedScene" uid="uid://y7h2gyhro86k" path="res://scenes/UI.tscn" id="4_lbhrr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8cj0n"]
 
@@ -13,14 +15,15 @@ sky_material = SubResource("ProceduralSkyMaterial_8cj0n")
 background_mode = 2
 sky = SubResource("Sky_8cj0n")
 
-[node name="Game" type="Node3D" unique_id=586767268]
+[node name="game" type="Node" unique_id=1760328605]
+script = ExtResource("2_lnu2h")
 
 [node name="PlayerInput" type="Node" parent="." unique_id=806826451]
 unique_name_in_owner = true
 script = ExtResource("1_lnu2h")
 
-[node name="gameManager" type="Node" parent="." unique_id=1760328605]
-script = ExtResource("2_lnu2h")
+[node name="Player" type="Node" parent="." unique_id=355974303]
+script = ExtResource("3_iywne")
 
 [node name="MainCamera" type="Camera3D" parent="." unique_id=1192955099]
 unique_name_in_owner = true
@@ -34,6 +37,12 @@ unique_name_in_owner = true
 script = ExtResource("1_uwrxv")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1830705475]
-transform = Transform3D(0.8426122, 0.23936121, 0.48240116, 0, -0.89578927, 0.44447884, 0.53852075, -0.3745232, -0.754803, 0, 0, 0)
+transform = Transform3D(0.84261227, 0.2393611, 0.4824012, 0, -0.8957894, 0.44447887, 0.5385208, -0.3745233, -0.75480306, 0, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=233121701]
+
+[node name="UI" parent="." unique_id=979071823 instance=ExtResource("4_lbhrr")]
+
+[connection signal="init_game" from="." to="Map" method="_on_game_init_game"]
+[connection signal="newToolSelected" from="UI" to="." method="_on_ui_new_tool_selected"]
+[connection signal="nextTurnPressed" from="UI" to="." method="_on_ui_next_turn_pressed"]

@@ -25,16 +25,10 @@ func advanceState():
 func StartPlayerTurn():
 	start_player_turn.emit()
 	currentState = state.PlayerTurn
-	print_debug("Start Player Turn")
-	%PlayerInput.connect("map_clicked",onMapClicked)
-	
-	remainingAction = actionPerPhase
 	pass
 
 func EndPlayerTurn():
-	%PlayerInput.disconnect("map_clicked",onMapClicked)
 	advanceState()
-	
 	pass
 
 func onActionTaken():
@@ -58,3 +52,7 @@ func StartParasiteTurn():
 func EndParasiteTurn():
 	advanceState()
 	pass
+
+func _on_ui_next_turn_pressed() -> void:
+	EndPlayerTurn()
+	pass # Replace with function body.

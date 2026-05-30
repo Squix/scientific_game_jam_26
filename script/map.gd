@@ -2,10 +2,12 @@ class_name Map
 extends Node3D
 
 var mapArray: Array[Cell]
-var width: int = 10
-var height: int = 10
+var width: int = 9
+var height: int = 7
 
 var cellScene = preload("res://scenes/cell.tscn")
+
+
 
 func getCellSafe(_x:int , _z:int):
 	if _x >=0 and _x < width and _z >= 0 and _z<height:
@@ -37,5 +39,6 @@ func _ready() -> void:
 	position.x = -width/2
 	position.z = -height/2
 
-func _on_game_manager_init_game() -> void:
+
+func _on_game_init_game() -> void:
 	_initMap()
