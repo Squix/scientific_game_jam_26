@@ -24,10 +24,16 @@ script = ExtResource("2_lnu2h")
 
 [node name="MainCamera" type="Camera3D" parent="." unique_id=1192955099]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 10, 10)
+transform = Transform3D(1, 0, 0, 0, 0.25881907, 0.9659258, 0, -0.9659258, 0.25881907, 0, 23, 6)
 environment = SubResource("Environment_8cj0n")
 current = true
+fov = 25.0
 
 [node name="Map" type="Node3D" parent="." unique_id=1799476755]
 unique_name_in_owner = true
 script = ExtResource("1_uwrxv")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1830705475]
+transform = Transform3D(0.8426122, 0.23936121, 0.48240116, 0, -0.89578927, 0.44447884, 0.53852075, -0.3745232, -0.754803, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=233121701]
