@@ -11,6 +11,7 @@ var fieldPos : Dictionary[String, int] = {"x":0, "z":0}
 @onready var colza_dead = $offset/scale/Colza_Dead
 @onready var colza_cut = $offset/scale/Colza_Cut
 @onready var parasite = $offset/scale/Parasite
+@onready var parasite_dead = $offset/scale/ParasiteDead
 
 @onready var ground : MeshInstance3D = $offset/ground
 
@@ -27,6 +28,11 @@ func set_state(new_state: CellState):
 		debug_material.albedo_color = Color.BLUE_VIOLET
 		debug_mesh.surface_set_material(0, debug_material)
 		(colza_alive.find_child("Colza_BASE") as MeshInstance3D).mesh = debug_mesh
+		
+	if(new_state == CellState.dead):
+		colza_alive.hide()
+		colza_dead.show()
+		parasite_dead.show()
 		
 	state = new_state
 
@@ -76,8 +82,7 @@ func open_colza():
 	
 func KillColza():
 	set_state(CellState.dead)
-	colza_alive.hide()
-	colza_dead.show()
+
 
 func CutColza():
 	set_state(CellState.cut)
