@@ -47,8 +47,8 @@ func _get_target_cell() -> Variant:
 	print("cells", adjacent_cells.map(func(c: Cell):return "name: {0},soilLevel: {1},sunLevel: {2},waterLevel: {3}".format([c.name, c.soilLevel, c.sunLevel, c.waterLevel])))
 	#filter to keep good ones
 	var valid_cells = adjacent_cells.filter(func(c : Cell):
-		return c.soilLevel == spreadRules["soilLevel"] && c.waterLevel == spreadRules["waterLevel"] && c.sunLevel == spreadRules["sunLevel"]  )
+		return c.waterLevel == spreadRules["waterLevel"] && c.sunLevel == spreadRules["sunLevel"]  )
 	#random select between good ones
-	if len(valid_cells == 0):
+	if len(valid_cells) == 0:
 		return null
 	return valid_cells.pick_random()
