@@ -26,12 +26,13 @@ func _spawn_parasite():
 	
 func start_turn():
 	print("Parasite turn")
-	#kill current_cell
-	current_cell.KillColza()
+	#kill current_cell if healthy
+	if current_cell.state == Cell.CellState.containParasite:
+		current_cell.KillColza()
 	#duplicate into adjacent_cell
 	var target = _get_target_cell()
 	if not target:
-		push_error("No valid cells for spreading, game won!")
+		print("No valid cells for spreading, game won!")
 		parasite_dead.emit()
 		return
 	(target as Cell).set_state(Cell.CellState.containParasite)
