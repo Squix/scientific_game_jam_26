@@ -4,6 +4,7 @@ extends Node
 enum tool {none,watteringCan,magnifyingGlass,scythe,tree}
 
 signal no_actions_left
+signal parasite_cut
 
 @onready var map : Map = %Map
 
@@ -31,6 +32,8 @@ func useTreeAt(_cell:Cell):
 
 func useScytheAt(_cell:Cell):
 	_cell.CutColza()
+	if _cell.state == Cell.CellState.containParasite:
+		parasite_cut.emit()
 
 func _on_ui_new_tool_selected(newTool: Player.tool) -> void:
 	currentTool = newTool

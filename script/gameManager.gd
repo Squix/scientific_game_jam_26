@@ -59,3 +59,7 @@ func _on_parasite_parasite_turn_ended() -> void:
 		print("GAME OVER - you LOST")
 		game_lost.emit()
 	EndParasiteTurn()
+
+
+func _on_player_parasite_cut() -> void:
+	game_won.emit()
