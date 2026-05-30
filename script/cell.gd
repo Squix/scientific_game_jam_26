@@ -14,11 +14,13 @@ var fieldPos : Dictionary[String, int] = {"x":0, "z":0}
 
 @onready var ground : MeshInstance3D = $offset/ground
 
+@export var SHOW_DEBUG_PARASITE = false
+
 var groundMeshBase = preload("res://Assets/mesh/groundMeshBase.tres")
 var groundMeshWet = preload("res://Assets/mesh/groundMeshWet.tres")
 
 func set_state(new_state: CellState):
-	if(new_state == CellState.containParasite):
+	if(new_state == CellState.containParasite && SHOW_DEBUG_PARASITE):
 		print("Cell {0} contient le parasite".format([name]))
 		var debug_material : Material = StandardMaterial3D.new()
 		var debug_mesh = (colza_alive.find_child("Colza_BASE") as MeshInstance3D).mesh.duplicate(true)
