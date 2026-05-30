@@ -130,6 +130,46 @@ horizontal_alignment = 1
 layout_mode = 2
 text = "You beated the ouro-branche!"
 
+[node name="GameLost" type="Control" parent="." unique_id=1175319480]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="GameLost" unique_id=2100954671]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="GameLost/CenterContainer" unique_id=1700792930]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="GameLost/CenterContainer/Panel" unique_id=649079668]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameLost/CenterContainer/Panel/MarginContainer" unique_id=1616454845]
+layout_mode = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="GameLost/CenterContainer/Panel/MarginContainer/VBoxContainer" unique_id=1149932152]
+layout_mode = 2
+text = "GAME LOST!"
+label_settings = SubResource("LabelSettings_5en4g")
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="GameLost/CenterContainer/Panel/MarginContainer/VBoxContainer" unique_id=1359535400]
+layout_mode = 2
+text = "The ouro branche beat you!"
+
 [connection signal="toggled" from="HBoxContainer/WatteringCan" to="." method="_on_wattering_can_toggled"]
 [connection signal="toggled" from="HBoxContainer/MagnifyingGlass" to="." method="_on_magnifying_glass_toggled"]
 [connection signal="toggled" from="HBoxContainer/Tree" to="." method="_on_tree_toggled"]

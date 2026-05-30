@@ -8,6 +8,10 @@ signal start_player_turn
 signal game_won()
 signal game_lost()
 
+@onready var map := %Map
+
+@export var HEALTHY_FIELD_THRESHOLD = 0.5
+
 const actionPerPhase = 1
 var remainingAction = 0
 var currentState: state = state.PlayerTurn
@@ -49,7 +53,6 @@ func onMapClicked(_worldPosition:Vector3):
 func StartParasiteTurn():
 	currentState = state.ParasiteTurn
 	start_parasite_turn.emit()
-	EndParasiteTurn()
 
 func EndParasiteTurn():
 	advanceState()
@@ -62,3 +65,11 @@ func _on_ui_next_turn_pressed() -> void:
 
 func _on_parasite_parasite_dead() -> void:
 	game_won.emit()
+
+
+func _on_parasite_parasite_turn_ended() -> void:
+	#check if colza field is still healthy
+	if len(map.getAliveCells()) < (map.width * map.height)*HEALTHY_FIELD_THRESHOLD:
+		print("GAME OVER - you LOST")
+		game_lost.emit()
+	EndParasiteTurn()
