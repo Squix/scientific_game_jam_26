@@ -24,7 +24,7 @@ visible = false
 [node name="Colza_Dead" parent="offset/scale" unique_id=1588074850 instance=ExtResource("4_ecwuj")]
 visible = false
 
-[node name="Parasite" parent="offset/scale" unique_id=864871748 instance=ExtResource("5_k6tqi")]
+[node name="Parasite" parent="offset/scale" unique_id=1118459748 instance=ExtResource("5_k6tqi")]
 visible = false
 
 [node name="ground" type="MeshInstance3D" parent="offset" unique_id=420224530]

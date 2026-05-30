@@ -19,7 +19,7 @@ load_path = "res://.godot/imported/Tool_Arrosoir.png-d39556d092d45b29ac0aeefd687
 font_size = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_75u2n"]
-font_size = 48
+font_size = 24
 
 [node name="UI" type="Control" unique_id=979071823]
 layout_mode = 3
