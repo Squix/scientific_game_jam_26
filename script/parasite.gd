@@ -19,11 +19,15 @@ var current_cell : Cell
 func _spawn_parasite():
 	#get field
 	#get a random cell
-	#change state of this random cell
+	#kill this random cell
+	#infect adjacent cell
 	var random_cell_coords = {"x":randi_range(0, field.width-1), "z":randi_range(0, field.height-1)}
 	var random_cell : Cell = field.getCellUnsafe(random_cell_coords.x, random_cell_coords.z)
-	random_cell.set_state(Cell.CellState.containParasite)
+	random_cell.set_state(Cell.CellState.dead)
 	current_cell = random_cell
+	var adjacent_cell : Cell = _get_target_cell()
+	adjacent_cell.set_state(Cell.CellState.containParasite)
+	current_cell = adjacent_cell
 	
 func start_turn():
 	print("Parasite turn")
