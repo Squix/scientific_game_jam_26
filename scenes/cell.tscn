@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://qatdamvcq5bx"]
+
+[ext_resource type="Script" uid="uid://k1sh850oind2" path="res://script/cell.gd" id="1_upbjj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_upbjj"]
+resource_local_to_scene = true
+
+[node name="Cell" type="Node3D" unique_id=665989920]
+script = ExtResource("1_upbjj")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=114831002]
+material = SubResource("StandardMaterial3D_upbjj")
