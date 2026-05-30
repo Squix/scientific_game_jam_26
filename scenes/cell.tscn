@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bsjqgl4i50n7k" path="res://Assets/Colza_Tile.glb" id="2_0s7o3"]
 [ext_resource type="PackedScene" uid="uid://jnflv8uh5pfs" path="res://Assets/Colza_Tile_Cut.glb" id="3_ds1sf"]
 [ext_resource type="PackedScene" uid="uid://bmlcpoapg1180" path="res://Assets/Colza_Tile_Dead.glb" id="4_ecwuj"]
+[ext_resource type="ArrayMesh" uid="uid://cqor3wmfno20x" path="res://Assets/mesh/groundMeshBase.tres" id="5_ecwuj"]
 
 [node name="Cell" type="Node3D" unique_id=665989920]
 script = ExtResource("1_upbjj")
@@ -23,3 +24,4 @@ visible = false
 visible = false
 
 [node name="ground" type="MeshInstance3D" parent="offset" unique_id=420224530]
+mesh = ExtResource("5_ecwuj")

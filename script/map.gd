@@ -62,8 +62,8 @@ func getAliveCells() -> Array[Cell]:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	position.x = -width/2
-	position.z = -height/2
+	position.x = -width/2 -0.5
+	position.z = -height/2 -0.5
 
 
 func _on_game_init_game() -> void:
