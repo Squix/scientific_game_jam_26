@@ -2,11 +2,14 @@ extends Node
 
 enum state {PlayerTurn, ParasiteTurn, GameOver}
 
+signal init_game
+
 const actionPerPhase = 1
 var remainingAction = 0
 var currentState: state = state.PlayerTurn
 
 func _ready() -> void:
+	init_game.emit()
 	StartPlayerTurn()
 
 func advanceState():
