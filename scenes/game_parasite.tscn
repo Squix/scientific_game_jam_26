@@ -18,6 +18,8 @@ sky = SubResource("Sky_8cj0n")
 [node name="PlayerInput" type="Node" parent="." unique_id=806826451]
 script = ExtResource("1_n7a5f")
 
+[node name="Parasite" type="Node" parent="." unique_id=167383690]
+
 [node name="Sequence" type="Node" parent="." unique_id=1760328605]
 
 [node name="PlayerPhase" type="Node" parent="Sequence" unique_id=83167491]
