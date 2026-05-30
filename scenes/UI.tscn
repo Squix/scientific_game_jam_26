@@ -8,12 +8,16 @@
 [ext_resource type="Texture2D" uid="uid://bdluybscipvt8" path="res://Assets/Tool_Faux.png" id="4_ua6yw"]
 [ext_resource type="Texture2D" uid="uid://ci8v3fcnor4sf" path="res://Assets/Tool_Loupe_selected.png" id="5_24e4x"]
 [ext_resource type="Texture2D" uid="uid://c22rdsfkgs2e" path="res://Assets/Tool_Faux_selected.png" id="8_ukj8e"]
+[ext_resource type="Texture2D" uid="uid://bvolun812r6y0" path="res://Assets/UI_Frame.png" id="9_ukj8e"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_dj8aq"]
 resource_name = "Tool"
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5en4g"]
 load_path = "res://.godot/imported/Tool_Arrosoir.png-d39556d092d45b29ac0aeefd687c259e.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w7enk"]
+texture = ExtResource("9_ukj8e")
 
 [sub_resource type="LabelSettings" id="LabelSettings_5en4g"]
 font_size = 32
@@ -140,7 +144,6 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="GameWon" type="Control" parent="." unique_id=1045635620]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -158,6 +161,7 @@ grow_vertical = 2
 
 [node name="Panel" type="PanelContainer" parent="GameWon/CenterContainer" unique_id=1652986114]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_w7enk")
 
 [node name="MarginContainer" type="MarginContainer" parent="GameWon/CenterContainer/Panel" unique_id=94266173]
 layout_mode = 2
