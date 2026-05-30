@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://qatdamvcq5bx"]
 
 [ext_resource type="Script" uid="uid://k1sh850oind2" path="res://script/cell.gd" id="1_upbjj"]
+[ext_resource type="PackedScene" uid="uid://bsjqgl4i50n7k" path="res://Assets/Colza_Tile.glb" id="2_0s7o3"]
+[ext_resource type="PackedScene" uid="uid://jnflv8uh5pfs" path="res://Assets/Colza_Tile_Cut.glb" id="3_ds1sf"]
+[ext_resource type="PackedScene" uid="uid://bmlcpoapg1180" path="res://Assets/Colza_Tile_Dead.glb" id="4_ecwuj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_upbjj"]
 resource_local_to_scene = true
@@ -8,5 +11,20 @@ resource_local_to_scene = true
 [node name="Cell" type="Node3D" unique_id=665989920]
 script = ExtResource("1_upbjj")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=114831002]
+[node name="offset" type="Node3D" parent="." unique_id=191414922]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="offset" unique_id=114831002]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 material = SubResource("StandardMaterial3D_upbjj")
+
+[node name="scale" type="Node3D" parent="offset" unique_id=343564950]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+
+[node name="Colza" parent="offset/scale" unique_id=1225748614 instance=ExtResource("2_0s7o3")]
+
+[node name="Colza_Cut" parent="offset/scale" unique_id=1006945291 instance=ExtResource("3_ds1sf")]
+visible = false
+
+[node name="Colza_Dead" parent="offset/scale" unique_id=1588074850 instance=ExtResource("4_ecwuj")]
+visible = false

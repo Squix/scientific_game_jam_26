@@ -24,12 +24,13 @@ func instantiateCell (_x:int, _z:int) -> Cell :
 	var cellInstance : Cell = cellScene.instantiate()
 	cellInstance.position.x = _x
 	cellInstance.position.z = _z
+	cellInstance.initCell()
 	add_child(cellInstance)
 	return cellInstance
 
 func worldPosToCellCoord(_position: Vector3) -> Vector2i:
 	var localPos = _position -  position
-	return Vector2i(localPos.x,ceil(localPos.z))
+	return Vector2i(localPos.x,localPos.z)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
