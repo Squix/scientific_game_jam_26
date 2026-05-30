@@ -2,11 +2,16 @@ extends Node
 
 enum state {PlayerTurn, ParasiteTurn, GameOver}
 
+signal init_game
+signal start_parasite_turn
+signal start_player_turn
+
 const actionPerPhase = 1
 var remainingAction = 0
 var currentState: state = state.PlayerTurn
 
 func _ready() -> void:
+	init_game.emit()
 	StartPlayerTurn()
 
 func advanceState():
@@ -18,15 +23,18 @@ func advanceState():
 			StartPlayerTurn()
 
 func StartPlayerTurn():
+	start_player_turn.emit()
 	currentState = state.PlayerTurn
 	print_debug("Start Player Turn")
 	%PlayerInput.connect("map_clicked",onMapClicked)
+	
 	remainingAction = actionPerPhase
 	pass
 
 func EndPlayerTurn():
 	%PlayerInput.disconnect("map_clicked",onMapClicked)
 	advanceState()
+	
 	pass
 
 func onActionTaken():
@@ -39,14 +47,13 @@ func onMapClicked(_worldPosition:Vector3):
 	var coord = %Map.worldPosToCellCoord(_worldPosition)
 	var cell : Cell = %Map.getCellSafe(coord.x,coord.y)
 	if(cell):
-		cell.KillColza()
+		cell.CutColza()
 	onActionTaken()
 
 func StartParasiteTurn():
 	currentState = state.ParasiteTurn
-	print_debug("Start Parasite Turn")
+	start_parasite_turn.emit()
 	EndParasiteTurn()
-	pass
 
 func EndParasiteTurn():
 	advanceState()

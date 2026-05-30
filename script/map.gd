@@ -15,7 +15,7 @@ func getCellSafe(_x:int , _z:int):
 func getCellUnsafe(_x:int , _z:int) -> Cell:
 	return mapArray[width*_z + _x]	
 
-func initMap() -> void:
+func _initMap() -> void:
 	for _z in range (height):
 		for _x in range(width):
 			mapArray.push_back(instantiateCell(_x,_z))
@@ -34,7 +34,8 @@ func worldPosToCellCoord(_position: Vector3) -> Vector2i:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	initMap()
 	position.x = -width/2
 	position.z = -height/2
-	pass # Replace with function body.
+
+func _on_game_manager_init_game() -> void:
+	_initMap()
