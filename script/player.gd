@@ -33,10 +33,11 @@ func useTreeAt(_cell:Cell):
 	pass
 
 func useScytheAt(_cell:Cell):
+	if _cell.state == Cell.CellState.containParasite:
+		_cell.parasite_dead.show()
+		parasite_cut.emit()
 	_cell.CutColza()
 	colza_cut.emit()
-	if _cell.state == Cell.CellState.containParasite:
-		parasite_cut.emit()
 
 func _on_ui_new_tool_selected(newTool: Player.tool) -> void:
 	currentTool = newTool
