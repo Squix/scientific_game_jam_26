@@ -25,6 +25,7 @@ func instantiateCell (_x:int, _z:int) -> Cell :
 	cellInstance.position.x = _x
 	cellInstance.position.z = _z
 	cellInstance.initCell()
+	cellInstance.fieldPos = Vector2(_x,_z)
 	add_child(cellInstance)
 	return cellInstance
 
