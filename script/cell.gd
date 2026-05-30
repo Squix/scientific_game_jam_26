@@ -88,4 +88,4 @@ func CutColza():
 	set_state(CellState.cut)
 	colza_alive.hide()
 	colza_cut.show()
-	pass
+	pass	
