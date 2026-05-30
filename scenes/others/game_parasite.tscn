@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://b6m1pny5ph7y1"]
 
-[ext_resource type="Script" uid="uid://doy0waosju62a" path="res://script/playerInput.gd" id="1_n7a5f"]
-[ext_resource type="Script" uid="uid://23jvbo5minnk" path="res://script/gameManager.gd" id="2_n7a5f"]
-[ext_resource type="Script" uid="uid://btl7inol7jdgb" path="res://script/map.gd" id="3_xcjxa"]
-[ext_resource type="Script" uid="uid://ckftm1acmnpy3" path="res://script/parasite.gd" id="4_n6wg5"]
-[ext_resource type="PackedScene" uid="uid://y7h2gyhro86k" path="res://scenes/UI.tscn" id="5_xcjxa"]
+[ext_resource type="Script" uid="uid://23jvbo5minnk" path="res://script/gameManager.gd" id="1_v14lw"]
+[ext_resource type="Script" uid="uid://doy0waosju62a" path="res://script/playerInput.gd" id="2_6e6s5"]
+[ext_resource type="Script" uid="uid://btl7inol7jdgb" path="res://script/map.gd" id="3_okbhp"]
+[ext_resource type="Script" uid="uid://ckftm1acmnpy3" path="res://script/parasite.gd" id="4_l1f50"]
+[ext_resource type="PackedScene" uid="uid://y7h2gyhro86k" path="res://scenes/UI.tscn" id="5_v11ft"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8cj0n"]
 
@@ -16,11 +16,11 @@ background_mode = 2
 sky = SubResource("Sky_8cj0n")
 
 [node name="Game" type="Node3D" unique_id=586767268]
-script = ExtResource("2_n7a5f")
+script = ExtResource("1_v14lw")
 
 [node name="PlayerInput" type="Node" parent="." unique_id=806826451]
 unique_name_in_owner = true
-script = ExtResource("1_n7a5f")
+script = ExtResource("2_6e6s5")
 
 [node name="MainCamera" type="Camera3D" parent="." unique_id=1192955099]
 unique_name_in_owner = true
@@ -30,12 +30,12 @@ current = true
 
 [node name="Map" type="Node3D" parent="." unique_id=1799476755]
 unique_name_in_owner = true
-script = ExtResource("3_xcjxa")
+script = ExtResource("3_okbhp")
 
 [node name="Parasite" type="Node" parent="." unique_id=1560733485]
-script = ExtResource("4_n6wg5")
+script = ExtResource("4_l1f50")
 
-[node name="UI" parent="." unique_id=979071823 instance=ExtResource("5_xcjxa")]
+[node name="UI" parent="." unique_id=979071823 instance=ExtResource("5_v11ft")]
 
 [connection signal="game_lost" from="." to="UI" method="_on_game_game_lost"]
 [connection signal="game_won" from="." to="UI" method="_on_game_game_won"]

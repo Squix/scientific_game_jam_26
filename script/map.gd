@@ -4,8 +4,8 @@ extends Node3D
 signal map_initialized
 
 var mapArray: Array[Cell]
-var width: int = 5
-var height: int = 7
+@export var width: int = 5
+@export var height: int = 7
 
 var cellScene = preload("res://scenes/cell.tscn")
 

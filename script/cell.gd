@@ -30,12 +30,19 @@ func set_state(new_state: CellState):
 		(colza_alive.find_child("Colza_BASE") as MeshInstance3D).mesh = debug_mesh
 		
 	if(new_state == CellState.dead):
-		colza_alive.hide()
-		colza_dead.show()
-		parasite_dead.show()
-		
+		var tween = create_tween()
+		tween.tween_method(Shake.bind(randf()),0.0,1.0,1)
+		tween.tween_callback(colza_alive.hide)
+		tween.tween_callback(colza_dead.show)
+		tween.tween_callback(parasite_dead.show)
+	
 	state = new_state
 
+func Shake(delta:float,power: float):
+	($offset/scale as Node3D).rotation.x = cos(delta*PI*10)*exp(-delta)/5*power
+	($offset/scale as Node3D).rotation.z = sin(delta*PI*10)*exp(-delta)/10
+	pass
+		
 var waterLevel: int = 1
 var soilLevel: int = 1
 var sunLevel: int = 1
@@ -82,6 +89,7 @@ func open_colza():
 	
 func KillColza():
 	set_state(CellState.dead)
+	
 
 
 func CutColza():

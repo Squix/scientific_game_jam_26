@@ -26,8 +26,8 @@ func _process(delta: float) -> void:
 				cell.playWindAnim()
 
 func getWorldPosFromScreen(_position: Vector2):
-	var from = %"MainCamera".project_ray_origin(_position)
-	var to = %MainCamera.project_ray_normal(_position)
+	var from = get_viewport().get_camera_3d().project_ray_origin(_position)
+	var to = get_viewport().get_camera_3d().project_ray_normal(_position)
 	return Plane.PLANE_XZ.intersects_ray(from,to)
 
 func _input(event):

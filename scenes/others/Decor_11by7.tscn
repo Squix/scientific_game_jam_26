@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://04jpu4u50cch" path="res://Assets/Barriere_Side.glb" id="6_3vk8r"]
 [ext_resource type="PackedScene" uid="uid://kig6fss3dfqi" path="res://Assets/Barriere_Corner.glb" id="7_hk4ek"]
 [ext_resource type="PackedScene" uid="uid://vjp0p87mkqj7" path="res://Assets/Grass_Patch_1.glb" id="8_w5vho"]
-[ext_resource type="PackedScene" uid="uid://h17xbwal46bd" path="res://scenes/TilesTest_11by7.tscn" id="9_ya3t1"]
+[ext_resource type="PackedScene" uid="uid://h17xbwal46bd" path="res://scenes/others/TilesTest_11by7.tscn" id="9_ya3t1"]
 
 [sub_resource type="Environment" id="Environment_s8c1j"]
 ambient_light_source = 2
