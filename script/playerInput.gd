@@ -3,6 +3,8 @@ extends Node
 var mouseScreenPos: Vector2 = Vector2()
 var mouseWorldPos: Vector3 = Vector3()
 
+signal map_clicked(worldPos:Vector3)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -24,4 +26,5 @@ func _input(event):
 		onClick(event.position)
 
 func onClick(_position: Vector2):
-	pass
+	map_clicked.emit(mouseWorldPos)
+	
