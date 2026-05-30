@@ -27,7 +27,13 @@ func getAdjacentCellsTo(cell: Cell) -> Array[Variant]:
 	#right
 	adjacent_cells.append(getCellSafe(cell_pos["x"]+1, cell_pos["z"]))
 	#corner up-left
-	adjacent_cells.append(getCellSafe(cell))
+	adjacent_cells.append(getCellSafe(cell_pos["x"]-1, cell_pos["z"]-1))
+	#corner down-left
+	adjacent_cells.append(getCellSafe(cell_pos["x"]-1, cell_pos["z"]+1))
+	#corner up-right
+	adjacent_cells.append(getCellSafe(cell_pos["x"]+1, cell_pos["z"]-1))
+	#corner down-right
+	adjacent_cells.append(getCellSafe(cell_pos["x"]+1, cell_pos["z"]+1))
 	
 	return adjacent_cells.filter(func(c): return c is Cell)
 
