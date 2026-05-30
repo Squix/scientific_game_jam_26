@@ -14,6 +14,12 @@ var fieldPos : Dictionary[String, int] = {"x":0, "z":0}
 func set_state(new_state: CellState):
 	if(new_state == CellState.containParasite):
 		print("Cell {0} contient le parasite".format([name]))
+		var debug_material : Material = StandardMaterial3D.new()
+		var debug_mesh = (colza_alive.find_child("Colza_BASE") as MeshInstance3D).mesh.duplicate(true)
+		debug_material.albedo_color = Color.BLUE_VIOLET
+		debug_mesh.surface_set_material(0, debug_material)
+		(colza_alive.find_child("Colza_BASE") as MeshInstance3D).mesh = debug_mesh
+		
 	state = CellState.containColza
 
 var waterLevel: int = 1
