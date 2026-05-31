@@ -9,6 +9,8 @@ signal mouseChangedCoord(coords:Vector2i)
 
 var map_ready = false
 
+@onready var sfxPlayer = $"../SFXplayer"
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -28,6 +30,7 @@ func _process(delta: float) -> void:
 			var cell = %Map.getCellSafe(newMouseCoord.x,newMouseCoord.y)
 			if(cell):
 				cell.playWindAnim()
+				sfxPlayer.play_sfx(SFXplayer.SFX.ColzaHover)
 
 func getWorldPosFromScreen(_position: Vector2):
 	var from = get_viewport().get_camera_3d().project_ray_origin(_position)
