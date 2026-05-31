@@ -212,7 +212,7 @@ horizontal_alignment = 1
 
 [node name="Label" type="Label" parent="GameWon/CenterContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=1243370526]
 layout_mode = 2
-text = "You've beaten the Orobranche Ramosa!"
+text = "You've beaten the Orobanche Ramosa!"
 
 [node name="RestartButton" type="Button" parent="GameWon/CenterContainer/Panel/MarginContainer/VBoxContainer2" unique_id=1725991444]
 layout_mode = 2
@@ -262,7 +262,7 @@ horizontal_alignment = 1
 
 [node name="Label" type="Label" parent="GameLost/CenterContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1359535400]
 layout_mode = 2
-text = "The Orobranche Ramosa has beaten you!"
+text = "The Orobanche Ramosa has beaten you!"
 
 [node name="RestartButton" type="Button" parent="GameLost/CenterContainer/Panel/MarginContainer/VBoxContainer" unique_id=1666218793]
 layout_mode = 2
