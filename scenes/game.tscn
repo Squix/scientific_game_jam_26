@@ -8,6 +8,8 @@
 [ext_resource type="Script" uid="uid://ckftm1acmnpy3" path="res://script/parasite.gd" id="4_trtic"]
 [ext_resource type="PackedScene" uid="uid://b2r7qigppidg2" path="res://scenes/map/smallMap.tscn" id="7_u5sy4"]
 [ext_resource type="Script" uid="uid://5e8bkm005egv" path="res://script/sfx_player.gd" id="8_gee14"]
+[ext_resource type="AudioStream" uid="uid://8pguc07x3gck" path="res://Assets/sounds/Ambiance_loop.mp3" id="9_0tnpc"]
+[ext_resource type="Script" uid="uid://dfrq2yftn1d5m" path="res://script/music_player.gd" id="10_vtaks"]
 
 [node name="game" type="Node" unique_id=1760328605]
 script = ExtResource("2_lnu2h")
@@ -32,12 +34,23 @@ script = ExtResource("1_uwrxv")
 
 [node name="SFXplayer" type="AudioStreamPlayer" parent="." unique_id=1294980814]
 volume_db = -8.0
+bus = &"SFX"
 script = ExtResource("8_gee14")
 
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1255383142]
+stream = ExtResource("9_0tnpc")
+volume_db = -16.0
+bus = &"Music"
+parameters/looping = true
+script = ExtResource("10_vtaks")
+
 [connection signal="game_lost" from="." to="UI" method="_on_game_game_lost"]
+[connection signal="game_lost" from="." to="MusicPlayer" method="_on_game_game_lost"]
 [connection signal="game_won" from="." to="UI" method="_on_game_game_won"]
+[connection signal="game_won" from="." to="MusicPlayer" method="_on_game_game_won"]
 [connection signal="init_game" from="." to="Map" method="_on_game_init_game"]
 [connection signal="init_game" from="." to="UI" method="_on_game_init_game"]
+[connection signal="init_game" from="." to="MusicPlayer" method="_on_game_init_game"]
 [connection signal="reset_game" from="." to="PlayerInput" method="_on_game_reset_game"]
 [connection signal="reset_game" from="." to="Map" method="_on_game_reset_game"]
 [connection signal="score_updated" from="." to="UI" method="_on_game_score_updated"]
