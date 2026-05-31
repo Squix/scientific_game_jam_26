@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dngv65vaqhjdl" path="res://Assets/Game_Logo.png" id="2_mgrm8"]
 [ext_resource type="Texture2D" uid="uid://bd3wvtvucu8ji" path="res://Assets/UI_Frame_Arrow.png" id="3_dc4i4"]
 [ext_resource type="FontFile" uid="uid://04okbdwpd8us" path="res://fonts/TrashHand.TTF" id="3_mgrm8"]
+[ext_resource type="Texture2D" uid="uid://bvolun812r6y0" path="res://Assets/UI_Frame.png" id="6_3yumr"]
 [ext_resource type="AudioStream" uid="uid://ktj2a0lt8j6d" path="res://Assets/sounds/Button_Clic.mp3" id="6_e54dn"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e54dn"]
@@ -12,6 +13,13 @@ texture = ExtResource("1_s4lrb")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3yumr"]
 texture = ExtResource("3_dc4i4")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cs5ya"]
+texture = ExtResource("6_3yumr")
+expand_margin_left = 60.0
+expand_margin_top = 70.0
+expand_margin_right = 60.0
+expand_margin_bottom = 70.0
 
 [node name="TitleScreen" type="Control" unique_id=927383986]
 layout_mode = 3
@@ -37,6 +45,7 @@ metadata/_edit_lock_ = true
 layout_mode = 2
 
 [node name="Title" type="VBoxContainer" parent="PanelContainer/CenterContainer" unique_id=705384790]
+visible = false
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="PanelContainer/CenterContainer/Title" unique_id=1567088795]
@@ -60,15 +69,22 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_3yumr")
 text = "How to play"
 
 [node name="HowToPlay" type="VBoxContainer" parent="PanelContainer/CenterContainer" unique_id=1586052516]
-visible = false
 layout_mode = 2
+theme_override_constants/separation = 32
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/CenterContainer/HowToPlay" unique_id=1886586628]
-custom_minimum_size = Vector2(800, 400)
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/CenterContainer/HowToPlay" unique_id=977339270]
 layout_mode = 2
-texture = ExtResource("2_mgrm8")
-expand_mode = 3
-stretch_mode = 5
+theme_override_styles/panel = SubResource("StyleBoxTexture_cs5ya")
+
+[node name="Label" type="Label" parent="PanelContainer/CenterContainer/HowToPlay/PanelContainer" unique_id=412998014]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+text = "Vous devez combattre un parasite qui ravage votre champs. Vous ne connaissez pas encore le comportement de ce parasite, seulement qu'il se propage à chaque tour de jeu vers une case adjacente à condition qu'il y trouve un terrain favorable.
+
+A vous de déduire son comportement au cours de la partie.
+Certains parasites sont sensible à l'humidité, d'autres à l'ensoleillement.
+Vous pouvez empêcher le parasite de se déplacer sur une parcelle si vous la fauchez à temps."
+autowrap_mode = 3
 
 [node name="StartGame" type="Button" parent="PanelContainer/CenterContainer/HowToPlay" unique_id=1625365730]
 custom_minimum_size = Vector2(200, 110)
