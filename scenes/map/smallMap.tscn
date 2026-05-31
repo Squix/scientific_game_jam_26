@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bd7siok0ifx5h" path="res://Assets/Rock_2.glb" id="2_nhgmv"]
 [ext_resource type="PackedScene" uid="uid://cnnk5xh6y2buw" path="res://Assets/Rock_3.glb" id="3_3lurt"]
 [ext_resource type="PackedScene" uid="uid://eehg02iwmv6n" path="res://Assets/Tree.glb" id="4_t11rc"]
-[ext_resource type="PackedScene" uid="uid://cvdiytsidpf2v" path="res://Assets/Ground_empty_Grid7by5.glb" id="5_odcj6"]
+[ext_resource type="PackedScene" uid="uid://dbqln07huo7dk" path="res://Assets/Ground_empty_Grid7by5.fbx" id="5_dhpx2"]
 [ext_resource type="PackedScene" uid="uid://04jpu4u50cch" path="res://Assets/Barriere_Side.glb" id="6_iw47v"]
 [ext_resource type="PackedScene" uid="uid://kig6fss3dfqi" path="res://Assets/Barriere_Corner.glb" id="7_u6xc2"]
 [ext_resource type="PackedScene" uid="uid://vjp0p87mkqj7" path="res://Assets/Grass_Patch_1.glb" id="8_iyi3l"]
@@ -86,7 +86,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -6)
 [node name="Environment17" parent="Decor" unique_id=1101064434 instance=ExtResource("4_t11rc")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2, 0, -7)
 
-[node name="Environment" parent="Decor" unique_id=1600865156 instance=ExtResource("5_odcj6")]
+[node name="Ground_empty_Grid7by5" parent="Decor" unique_id=1302742735 instance=ExtResource("5_dhpx2")]
 
 [node name="Barrieres" type="Node3D" parent="." unique_id=1991597267]
 
