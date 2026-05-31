@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://y7h2gyhro86k"]
+[gd_scene format=3 uid="uid://mucg007wo82o"]
 
 [ext_resource type="Script" uid="uid://cim2bdpsb24l" path="res://script/ui.gd" id="1_dj8aq"]
 [ext_resource type="Texture2D" uid="uid://c6y3bqnbtbd41" path="res://Assets/UI_Tools.png" id="2_75u2n"]
@@ -27,10 +27,17 @@ resource_name = "Tool"
 texture = ExtResource("9_ukj8e")
 
 [sub_resource type="LabelSettings" id="LabelSettings_5en4g"]
+font = ExtResource("2_aputy")
 font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_5sqrc"]
+font = ExtResource("2_aputy")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5sqrc"]
 texture = ExtResource("9_ukj8e")
+
+[sub_resource type="LabelSettings" id="LabelSettings_7paak"]
+font = ExtResource("2_aputy")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7paak"]
 texture = ExtResource("9_ukj8e")
@@ -213,13 +220,15 @@ horizontal_alignment = 1
 [node name="Label" type="Label" parent="GameWon/CenterContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=1243370526]
 layout_mode = 2
 text = "You've beaten the Orobanche Ramosa!"
+label_settings = SubResource("LabelSettings_5sqrc")
 
 [node name="RestartButton" type="Button" parent="GameWon/CenterContainer/Panel/MarginContainer/VBoxContainer2" unique_id=1725991444]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_aputy")
+theme_override_font_sizes/font_size = 30
 text = "RETRY"
 
 [node name="GameLost" type="Control" parent="." unique_id=1175319480]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -263,9 +272,12 @@ horizontal_alignment = 1
 [node name="Label" type="Label" parent="GameLost/CenterContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1359535400]
 layout_mode = 2
 text = "The Orobanche Ramosa has beaten you!"
+label_settings = SubResource("LabelSettings_7paak")
 
 [node name="RestartButton" type="Button" parent="GameLost/CenterContainer/Panel/MarginContainer/VBoxContainer" unique_id=1666218793]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_aputy")
+theme_override_font_sizes/font_size = 30
 text = "RETRY"
 
 [node name="ScoreLabel" type="Label" parent="." unique_id=2132654117]
@@ -274,6 +286,7 @@ offset_left = 103.0
 offset_top = 112.0
 offset_right = 227.0
 offset_bottom = 135.0
+theme_override_fonts/font = ExtResource("2_aputy")
 theme_override_styles/normal = SubResource("StyleBoxTexture_7paak")
 text = "Colza restant : 0"
 label_settings = SubResource("LabelSettings_75u2n")
