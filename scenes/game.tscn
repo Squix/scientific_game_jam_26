@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://y7h2gyhro86k" path="res://scenes/UI.tscn" id="4_lbhrr"]
 [ext_resource type="Script" uid="uid://ckftm1acmnpy3" path="res://script/parasite.gd" id="4_trtic"]
 [ext_resource type="PackedScene" uid="uid://b2r7qigppidg2" path="res://scenes/map/smallMap.tscn" id="7_u5sy4"]
+[ext_resource type="Script" uid="uid://5e8bkm005egv" path="res://script/sfx_player.gd" id="8_gee14"]
 
 [node name="game" type="Node" unique_id=1760328605]
 script = ExtResource("2_lnu2h")
@@ -28,6 +29,10 @@ script = ExtResource("1_uwrxv")
 [node name="UI" parent="." unique_id=979071823 instance=ExtResource("4_lbhrr")]
 
 [node name="SmallMap" parent="." unique_id=1866678314 instance=ExtResource("7_u5sy4")]
+
+[node name="SFXplayer" type="AudioStreamPlayer" parent="." unique_id=1294980814]
+volume_db = -8.0
+script = ExtResource("8_gee14")
 
 [connection signal="game_lost" from="." to="UI" method="_on_game_game_lost"]
 [connection signal="game_won" from="." to="UI" method="_on_game_game_won"]
