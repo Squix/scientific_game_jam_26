@@ -7,12 +7,16 @@ var mouseMapCoord: Vector2i = Vector2i()
 signal map_clicked(worldPos:Vector3)
 signal mouseChangedCoord(coords:Vector2i)
 
+var map_ready = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if(not map_ready):
+		return
 	mouseScreenPos = get_viewport().get_mouse_position()
 	var result = getWorldPosFromScreen(mouseScreenPos)
 	if(result):
@@ -41,3 +45,11 @@ func onClick(_position: Vector2):
 
 func _on_ui_new_tool_selected(newTool: Player.tool) -> void:
 	pass # Replace with function body.
+
+
+func _on_map_map_initialized() -> void:
+	map_ready = true
+
+
+func _on_game_reset_game() -> void:
+	map_ready = false

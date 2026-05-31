@@ -283,3 +283,5 @@ label_settings = SubResource("LabelSettings_75u2n")
 [connection signal="toggled" from="Tools/HBoxContainer/MagnifyingGlass" to="." method="_on_magnifying_glass_toggled"]
 [connection signal="toggled" from="Tools/HBoxContainer/Tree" to="." method="_on_tree_toggled"]
 [connection signal="toggled" from="Tools/HBoxContainer/Scythe" to="." method="_on_scythe_toggled"]
+[connection signal="pressed" from="GameWon/CenterContainer/Panel/MarginContainer/VBoxContainer2/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="GameLost/CenterContainer/Panel/MarginContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
