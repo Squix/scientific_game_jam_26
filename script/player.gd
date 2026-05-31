@@ -29,6 +29,7 @@ func useWatteringCanAt(_cell:Cell):
 	_cell.updateWaterLevel(1)
 
 func useMagnifyingGlassAt(cell:Cell):
+	sfxPlayer.play_sfx(SFXplayer.SFX.ToolMagnifyingGlass)
 	cell.open_colza()
 
 func useTreeAt(_cell:Cell):
