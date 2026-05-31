@@ -7,6 +7,7 @@
 [ext_resource type="ArrayMesh" uid="uid://cqor3wmfno20x" path="res://Assets/mesh/groundMeshBase.tres" id="5_ecwuj"]
 [ext_resource type="PackedScene" uid="uid://dknd6imno0cd7" path="res://Assets/Parasite.glb" id="5_k6tqi"]
 [ext_resource type="PackedScene" uid="uid://6gi8k4icrogj" path="res://Assets/Parasite_dead.glb" id="6_4kve2"]
+[ext_resource type="PackedScene" uid="uid://b67ag8hpesb3g" path="res://scenes/vfx/Colza_cut_fx.tscn" id="8_k4tsc"]
 
 [node name="Cell" type="Node3D" unique_id=665989920]
 script = ExtResource("1_upbjj")
@@ -30,6 +31,9 @@ visible = false
 
 [node name="ParasiteDead" parent="offset/scale" unique_id=1336312325 instance=ExtResource("6_4kve2")]
 visible = false
+
+[node name="ColzaCutFx" parent="offset/scale" unique_id=496716595 instance=ExtResource("8_k4tsc")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 1, 0)
 
 [node name="ground" type="MeshInstance3D" parent="offset" unique_id=420224530]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
