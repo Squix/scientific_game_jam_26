@@ -62,7 +62,7 @@ func playWindAnim():
 		var animPlayer = (colza_alive.get_node("AnimationPlayer") as AnimationPlayer)
 		if(animPlayer.current_animation == "Wind" and animPlayer.is_playing()):
 			animPlayer.stop()
-		animPlayer.play("Wind",-1,3,false)
+		animPlayer.play("Wind_001",-1,3,false)
 
 func setWaterLevelToMax():
 	updateWaterLevel(maxWaterLevel-waterLevel)

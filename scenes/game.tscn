@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b2r7qigppidg2" path="res://scenes/map/smallMap.tscn" id="7_u5sy4"]
 [ext_resource type="Script" uid="uid://5e8bkm005egv" path="res://script/sfx_player.gd" id="8_gee14"]
 [ext_resource type="AudioStream" uid="uid://8pguc07x3gck" path="res://Assets/sounds/Ambiance_loop.mp3" id="9_0tnpc"]
-[ext_resource type="Script" path="res://script/music_player.gd" id="10_vtaks"]
+[ext_resource type="Script" uid="uid://dfrq2yftn1d5m" path="res://script/music_player.gd" id="10_vtaks"]
 
 [node name="game" type="Node" unique_id=1760328605]
 script = ExtResource("2_lnu2h")
