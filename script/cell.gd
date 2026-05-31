@@ -17,6 +17,8 @@ var fieldPos : Dictionary[String, int] = {"x":0, "z":0}
 
 @export var SHOW_DEBUG_PARASITE = false
 
+var colzaCutFx = preload("res://scenes/vfx/Colza_cut_fx.tscn")
+
 var groundMeshBase = preload("res://Assets/mesh/groundMeshBase.tres")
 var groundMeshWet = preload("res://Assets/mesh/groundMeshWet.tres")
 
@@ -99,6 +101,8 @@ func KillColza():
 
 func CutColza():
 	set_state(CellState.cut)
+	$offset/scale/ColzaCutFx.get_node("CPUParticles3D").restart()
+	add_child(colzaCutFx.instantiate())
 	colza_alive.hide()
 	colza_cut.show()
 	pass	
