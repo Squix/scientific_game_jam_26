@@ -26,15 +26,22 @@ func end_turn():
 
 
 func useWatteringCanAt(_cell:Cell):
+	sfxPlayer.play_sfx(SFXplayer.SFX.ToolWatteringCan)
 	_cell.updateWaterLevel(1)
 
 func useMagnifyingGlassAt(cell:Cell):
 	cell.open_colza()
+	if(cell.state == Cell.CellState.containParasite):
+		sfxPlayer.play_sfx(SFXplayer.SFX.ParasiteUncovered)
+	else:
+		sfxPlayer.play_sfx(SFXplayer.SFX.ToolMagnifyingGlass)
+
 
 func useTreeAt(_cell:Cell):
 	pass
 
 func useScytheAt(_cell:Cell):
+	sfxPlayer.play_sfx(SFXplayer.SFX.ToolScythe)
 	if _cell.state == Cell.CellState.containParasite:
 		_cell.parasite_dead.show()
 		parasite_cut.emit()
