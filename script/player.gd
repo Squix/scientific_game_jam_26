@@ -35,6 +35,7 @@ func useTreeAt(_cell:Cell):
 	pass
 
 func useScytheAt(_cell:Cell):
+	sfxPlayer.play_sfx(SFXplayer.SFX.ToolScythe)
 	if _cell.state == Cell.CellState.containParasite:
 		_cell.parasite_dead.show()
 		parasite_cut.emit()
