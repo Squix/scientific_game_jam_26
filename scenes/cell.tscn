@@ -10,7 +10,6 @@
 
 [node name="Cell" type="Node3D" unique_id=665989920]
 script = ExtResource("1_upbjj")
-SHOW_DEBUG_PARASITE = null
 
 [node name="offset" type="Node3D" parent="." unique_id=191414922]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
@@ -33,4 +32,8 @@ visible = false
 visible = false
 
 [node name="ground" type="MeshInstance3D" parent="offset" unique_id=420224530]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
+mesh = ExtResource("5_ecwuj")
+
+[node name="groundBase" type="MeshInstance3D" parent="offset" unique_id=612952506]
 mesh = ExtResource("5_ecwuj")

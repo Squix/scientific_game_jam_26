@@ -79,3 +79,11 @@ func _on_game_reset_game() -> void:
 	var child_cells = get_children()
 	for cell : Cell in child_cells:
 		cell.queue_free()
+
+
+func _on_game_start_player_turn() -> void:
+	for cell : Cell in mapArray:
+		if(cell.waterLevel > 1):
+			print(cell.waterLevel)
+			cell.updateWaterLevel(-1)
+	pass # Replace with function body.
