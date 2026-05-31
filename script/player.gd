@@ -30,8 +30,12 @@ func useWatteringCanAt(_cell:Cell):
 	_cell.updateWaterLevel(1)
 
 func useMagnifyingGlassAt(cell:Cell):
-	sfxPlayer.play_sfx(SFXplayer.SFX.ToolMagnifyingGlass)
 	cell.open_colza()
+	if(cell.state == Cell.CellState.containParasite):
+		sfxPlayer.play_sfx(SFXplayer.SFX.ParasiteUncovered)
+	else:
+		sfxPlayer.play_sfx(SFXplayer.SFX.ToolMagnifyingGlass)
+
 
 func useTreeAt(_cell:Cell):
 	pass
