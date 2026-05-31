@@ -44,8 +44,10 @@ func Shake(delta:float,power: float):
 	pass
 		
 var waterLevel: int = 1
+const maxWaterLevel: int = 3
 var soilLevel: int = 1
 var sunLevel: int = 1
+
 
 func initCell():
 	waterLevel = 1
@@ -60,16 +62,21 @@ func playWindAnim():
 			animPlayer.stop()
 		animPlayer.play("Wind",-1,3,false)
 
-	
+func setWaterLevelToMax():
+	updateWaterLevel(maxWaterLevel-waterLevel)
+	print(waterLevel)
 
 func updateWaterLevel(_change:int):
 	waterLevel += _change
-	waterLevel = clamp(waterLevel,1,2)
-	if(waterLevel == 2):
+	waterLevel = clamp(waterLevel,1,maxWaterLevel)
+	if(waterLevel > 1):
 		ground.mesh = groundMeshWet
+		var scaleFactor:float = (waterLevel+1)*(1.0/(maxWaterLevel+1))
+		ground.scale = Vector3(scaleFactor,scaleFactor,scaleFactor)
 	else :
 		ground.mesh = groundMeshBase
-	
+		ground.scale = Vector3(1,1,1)
+
 func updateSoilLevel(_change:int):
 	soilLevel += _change
 	soilLevel = clamp(soilLevel,1,2)
@@ -89,8 +96,6 @@ func open_colza():
 	
 func KillColza():
 	set_state(CellState.dead)
-	
-
 
 func CutColza():
 	set_state(CellState.cut)

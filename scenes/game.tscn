@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b2r7qigppidg2" path="res://scenes/map/smallMap.tscn" id="7_u5sy4"]
 [ext_resource type="Script" uid="uid://5e8bkm005egv" path="res://script/sfx_player.gd" id="8_gee14"]
 [ext_resource type="AudioStream" uid="uid://8pguc07x3gck" path="res://Assets/sounds/Ambiance_loop.mp3" id="9_0tnpc"]
-[ext_resource type="Script" uid="uid://dfrq2yftn1d5m" path="res://script/music_player.gd" id="10_vtaks"]
+[ext_resource type="Script" path="res://script/music_player.gd" id="10_vtaks"]
 
 [node name="game" type="Node" unique_id=1760328605]
 script = ExtResource("2_lnu2h")
@@ -56,6 +56,7 @@ script = ExtResource("10_vtaks")
 [connection signal="score_updated" from="." to="UI" method="_on_game_score_updated"]
 [connection signal="start_parasite_turn" from="." to="Parasite" method="start_turn"]
 [connection signal="start_player_turn" from="." to="Player" method="start_turn"]
+[connection signal="start_player_turn" from="." to="Map" method="_on_game_start_player_turn"]
 [connection signal="start_player_turn" from="." to="UI" method="_on_game_start_player_turn"]
 [connection signal="map_clicked" from="PlayerInput" to="Player" method="_on_player_input_map_clicked"]
 [connection signal="colza_cut" from="Player" to="." method="_on_player_colza_cut"]

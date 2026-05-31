@@ -27,7 +27,7 @@ func end_turn():
 
 func useWatteringCanAt(_cell:Cell):
 	sfxPlayer.play_sfx(SFXplayer.SFX.ToolWatteringCan)
-	_cell.updateWaterLevel(1)
+	_cell.setWaterLevelToMax()
 
 func useMagnifyingGlassAt(cell:Cell):
 	cell.open_colza()
