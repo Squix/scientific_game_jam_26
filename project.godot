@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="ScientificGameJam2026Nantes"
-run/main_scene="uid://x087nrpv8w63"
+run/main_scene="uid://b46imr8pdkv2j"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[audio]
+
+buses/default_bus_layout="uid://ceo5luxggywxg"
 
 [display]
 

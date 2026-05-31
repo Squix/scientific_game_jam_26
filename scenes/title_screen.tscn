@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://b46imr8pdkv2j"]
+
+[ext_resource type="Script" uid="uid://dg8iv12abopyd" path="res://script/title_screen.gd" id="1_dc4i4"]
+[ext_resource type="Texture2D" uid="uid://cet2kxxws8j2t" path="res://Assets/SplashScreen_Background.png" id="1_s4lrb"]
+[ext_resource type="Texture2D" uid="uid://dngv65vaqhjdl" path="res://Assets/Game_Logo.png" id="2_mgrm8"]
+[ext_resource type="Texture2D" uid="uid://bd3wvtvucu8ji" path="res://Assets/UI_Frame_Arrow.png" id="3_dc4i4"]
+[ext_resource type="FontFile" uid="uid://04okbdwpd8us" path="res://fonts/TrashHand.TTF" id="3_mgrm8"]
+[ext_resource type="AudioStream" uid="uid://ktj2a0lt8j6d" path="res://Assets/sounds/Button_Clic.mp3" id="6_e54dn"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e54dn"]
+texture = ExtResource("1_s4lrb")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3yumr"]
+texture = ExtResource("3_dc4i4")
+
+[node name="TitleScreen" type="Control" unique_id=927383986]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dc4i4")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=496041656]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_e54dn")
+metadata/_edit_lock_ = true
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer" unique_id=589163815]
+layout_mode = 2
+
+[node name="Title" type="VBoxContainer" parent="PanelContainer/CenterContainer" unique_id=705384790]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/CenterContainer/Title" unique_id=1567088795]
+custom_minimum_size = Vector2(800, 400)
+layout_mode = 2
+texture = ExtResource("2_mgrm8")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="SeeHowTo" type="Button" parent="PanelContainer/CenterContainer/Title" unique_id=894702900]
+custom_minimum_size = Vector2(300, 110)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("3_mgrm8")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxTexture_3yumr")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_3yumr")
+theme_override_styles/hover = SubResource("StyleBoxTexture_3yumr")
+text = "How to play"
+
+[node name="HowToPlay" type="VBoxContainer" parent="PanelContainer/CenterContainer" unique_id=1586052516]
+visible = false
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/CenterContainer/HowToPlay" unique_id=1886586628]
+custom_minimum_size = Vector2(800, 400)
+layout_mode = 2
+texture = ExtResource("2_mgrm8")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="StartGame" type="Button" parent="PanelContainer/CenterContainer/HowToPlay" unique_id=1625365730]
+custom_minimum_size = Vector2(200, 110)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("3_mgrm8")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxTexture_3yumr")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_3yumr")
+theme_override_styles/hover = SubResource("StyleBoxTexture_3yumr")
+text = "PLAY"
+
+[node name="SFXplayer" type="AudioStreamPlayer" parent="." unique_id=1350438839]
+stream = ExtResource("6_e54dn")
+bus = &"SFX"
+
+[connection signal="pressed" from="PanelContainer/CenterContainer/Title/SeeHowTo" to="." method="_on_see_how_to_pressed"]
+[connection signal="pressed" from="PanelContainer/CenterContainer/HowToPlay/StartGame" to="." method="_on_start_game_pressed"]
