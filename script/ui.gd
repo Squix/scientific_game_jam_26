@@ -9,6 +9,8 @@ extends Node
 @onready var watteringCanIcon : TextureButton = toolsUI.get_node("HBoxContainer/WatteringCan")
 @onready var scoreLabel := $ScoreLabel
 
+@onready var settingsUI = $SettingsDialog
+
 @onready var sfxPlayer = $"../SFXplayer"
 
 signal newToolSelected(newTool:  Player.tool)
@@ -55,6 +57,7 @@ func _on_game_init_game() -> void:
 	gameWonUI.hide()
 	toolsUI.show() 
 	nextTurnButton.hide()
+	settingsUI.hide()
 
 
 func _on_player_no_actions_left() -> void:
@@ -76,3 +79,15 @@ func _on_game_score_updated(new_score: int) -> void:
 func _on_restart_button_pressed() -> void:
 	sfxPlayer.play_sfx(SFXplayer.SFX.ButtonClick)
 	restartButtonPressed.emit()
+
+
+func _on_close_settings_button_pressed() -> void:
+	settingsUI.hide()
+
+
+func _on_open_settings_menu_pressed() -> void:
+	settingsUI.show()
+
+
+func _on_music_volume_slider_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear_to_db(value))

@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://mucg007wo82o"]
+[gd_scene format=3 uid="uid://y7h2gyhro86k"]
 
 [ext_resource type="Script" uid="uid://cim2bdpsb24l" path="res://script/ui.gd" id="1_dj8aq"]
 [ext_resource type="Texture2D" uid="uid://c6y3bqnbtbd41" path="res://Assets/UI_Tools.png" id="2_75u2n"]
@@ -48,6 +48,13 @@ expand_margin_bottom = 40.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_75u2n"]
 font_size = 24
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ilk7v"]
+texture = ExtResource("9_ukj8e")
+expand_margin_left = 32.0
+expand_margin_top = 32.0
+expand_margin_right = 32.0
+expand_margin_bottom = 32.0
 
 [node name="UI" type="Control" unique_id=979071823]
 layout_mode = 3
@@ -291,6 +298,57 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_7paak")
 text = "Colza restant : 0"
 label_settings = SubResource("LabelSettings_75u2n")
 
+[node name="SettingsDialog" type="Control" parent="." unique_id=1268272158]
+anchors_preset = 0
+offset_left = 472.0
+offset_top = 306.0
+offset_right = 512.0
+offset_bottom = 346.0
+
+[node name="CenterContainer" type="CenterContainer" parent="SettingsDialog" unique_id=187822786]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PanelContainer" type="PanelContainer" parent="SettingsDialog/CenterContainer" unique_id=1292459615]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ilk7v")
+
+[node name="CenterContainer" type="CenterContainer" parent="SettingsDialog/CenterContainer/PanelContainer" unique_id=135812541]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsDialog/CenterContainer/PanelContainer/CenterContainer" unique_id=711543426]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SettingsDialog/CenterContainer/PanelContainer/CenterContainer/VBoxContainer" unique_id=649535765]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SettingsDialog/CenterContainer/PanelContainer/CenterContainer/VBoxContainer/HBoxContainer" unique_id=1713534939]
+layout_mode = 2
+text = "AMBIENT VOLUME"
+
+[node name="MusicVolumeSlider" type="HSlider" parent="SettingsDialog/CenterContainer/PanelContainer/CenterContainer/VBoxContainer/HBoxContainer" unique_id=908905662]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 1
+min_value = -5.0
+max_value = 5.0
+step = 0.1
+
+[node name="CloseSettingsButton" type="Button" parent="SettingsDialog/CenterContainer/PanelContainer/CenterContainer/VBoxContainer" unique_id=2023544255]
+layout_mode = 2
+text = "CLOSE"
+
+[node name="OpenSettingsMenu" type="Button" parent="." unique_id=1173468371]
+layout_mode = 0
+offset_left = 1032.0
+offset_top = 39.0
+offset_right = 1114.0
+offset_bottom = 70.0
+text = "SETTINGS"
+
 [connection signal="pressed" from="CenterContainer/MarginContainer/NextTurn" to="." method="_on_next_turn_pressed"]
 [connection signal="toggled" from="Tools/HBoxContainer/WatteringCan" to="." method="_on_wattering_can_toggled"]
 [connection signal="toggled" from="Tools/HBoxContainer/MagnifyingGlass" to="." method="_on_magnifying_glass_toggled"]
@@ -298,3 +356,6 @@ label_settings = SubResource("LabelSettings_75u2n")
 [connection signal="toggled" from="Tools/HBoxContainer/Scythe" to="." method="_on_scythe_toggled"]
 [connection signal="pressed" from="GameWon/CenterContainer/Panel/MarginContainer/VBoxContainer2/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="GameLost/CenterContainer/Panel/MarginContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="value_changed" from="SettingsDialog/CenterContainer/PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/MusicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]
+[connection signal="pressed" from="SettingsDialog/CenterContainer/PanelContainer/CenterContainer/VBoxContainer/CloseSettingsButton" to="." method="_on_close_settings_button_pressed"]
+[connection signal="pressed" from="OpenSettingsMenu" to="." method="_on_open_settings_menu_pressed"]
