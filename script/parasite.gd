@@ -3,6 +3,8 @@ extends Node
 
 @onready var field : Map = %Map
 
+@onready var sfxPlayer = $"../SFXplayer"
+
 signal parasite_dead
 signal parasite_turn_ended
 signal parasite_cut_colza
@@ -33,6 +35,7 @@ func start_turn():
 	print("Parasite turn")
 	#kill current_cell if healthy
 	if current_cell.state == Cell.CellState.containParasite && current_cell.waterLevel < 2:
+		sfxPlayer.play_sfx(SFXplayer.SFX.ColzaDeath)
 		current_cell.KillColza()
 		parasite_cut_colza.emit()
 	else:
