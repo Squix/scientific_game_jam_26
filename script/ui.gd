@@ -33,8 +33,9 @@ func _on_scythe_toggled(toggled_on: bool) -> void:
 
 func _on_next_turn_pressed() -> void:
 	sfxPlayer.play_sfx(SFXplayer.SFX.ButtonClick)
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(0.5).timeout
 	nextTurnPressed.emit()
+	nextTurnButton.hide()
 
 
 func _on_game_game_won() -> void:
@@ -53,11 +54,12 @@ func _on_game_init_game() -> void:
 	gameLostUI.hide()
 	gameWonUI.hide()
 	toolsUI.show() 
-	nextTurnButton.show()
+	nextTurnButton.hide()
 
 
 func _on_player_no_actions_left() -> void:
 	toolsUI.hide()
+	nextTurnButton.show()
 
 
 func _on_game_start_player_turn() -> void:
