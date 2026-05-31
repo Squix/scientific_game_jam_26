@@ -71,3 +71,11 @@ func _ready() -> void:
 
 func _on_game_init_game() -> void:
 	_initMap()
+
+
+func _on_game_reset_game() -> void:
+	#reset map
+	mapArray = []
+	var child_cells = get_children()
+	for cell : Cell in child_cells:
+		cell.queue_free()

@@ -11,6 +11,7 @@ extends Node
 
 signal newToolSelected(newTool:  Player.tool)
 signal nextTurnPressed()
+signal restartButtonPressed()
 
 func _on_wattering_can_toggled(toggled_on: bool) -> void:
 	if(toggled_on):
@@ -48,6 +49,7 @@ func _on_game_init_game() -> void:
 	gameLostUI.hide()
 	gameWonUI.hide()
 	toolsUI.show() 
+	nextTurnButton.show()
 
 
 func _on_player_no_actions_left() -> void:
@@ -63,3 +65,7 @@ func _on_game_start_player_turn() -> void:
 
 func _on_game_score_updated(new_score: int) -> void:
 	scoreLabel.text = "Remaining colza: {0}".format([new_score])
+
+
+func _on_restart_button_pressed() -> void:
+	restartButtonPressed.emit()

@@ -8,6 +8,7 @@ signal start_player_turn
 signal game_won()
 signal game_lost()
 signal score_updated(new_score:int)
+signal reset_game
 
 @onready var map := %Map
 
@@ -15,13 +16,14 @@ signal score_updated(new_score:int)
 
 var currentState: state = state.PlayerTurn
 
-var score = 0
-
-func _ready() -> void:
+func _init_game():
 	init_game.emit()
 	var new_score = map.width * map.height
 	score_updated.emit(new_score)
 	StartPlayerTurn()
+
+func _ready() -> void:
+	_init_game()
 
 func advanceState():
 	#check for game end
@@ -76,3 +78,8 @@ func _on_player_colza_cut() -> void:
 
 func _on_parasite_parasite_cut_colza() -> void:
 	score_updated.emit(len(map.getAliveCells()))
+
+
+func _on_ui_restart_button_pressed() -> void:
+	reset_game.emit()
+	_init_game()
