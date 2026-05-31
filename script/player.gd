@@ -14,6 +14,8 @@ var remainingAction = 0
 
 var currentTool : Player.tool =  Player.tool.none
 
+@onready var sfxPlayer = $"../SFXplayer"
+
 func start_turn():
 	print_debug("Start Player Turn")
 	remainingAction = actionPerPhase
@@ -41,8 +43,7 @@ func useScytheAt(_cell:Cell):
 
 func _on_ui_new_tool_selected(newTool: Player.tool) -> void:
 	currentTool = newTool
-	print(currentTool)
-	pass # Replace with function body.
+	sfxPlayer.play_sfx(SFXplayer.SFX.ToolSelect)
 
 
 func _on_ui_next_turn_pressed() -> void:
