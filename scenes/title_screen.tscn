@@ -16,10 +16,14 @@ texture = ExtResource("3_dc4i4")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cs5ya"]
 texture = ExtResource("6_3yumr")
-expand_margin_left = 60.0
+expand_margin_left = 70.0
 expand_margin_top = 70.0
-expand_margin_right = 60.0
+expand_margin_right = 70.0
 expand_margin_bottom = 70.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_3yumr"]
+line_spacing = 12.0
+font_size = 24
 
 [node name="TitleScreen" type="Control" unique_id=927383986]
 layout_mode = 3
@@ -77,13 +81,14 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_cs5ya")
 
 [node name="Label" type="Label" parent="PanelContainer/CenterContainer/HowToPlay/PanelContainer" unique_id=412998014]
-custom_minimum_size = Vector2(500, 0)
+custom_minimum_size = Vector2(700, 0)
 layout_mode = 2
-text = "Vous devez combattre un parasite qui ravage votre champs. Vous ne connaissez pas encore le comportement de ce parasite, seulement qu'il se propage à chaque tour de jeu vers une case adjacente à condition qu'il y trouve un terrain favorable.
-
-A vous de déduire son comportement au cours de la partie.
-Certains parasites sont sensible à l'humidité, d'autres à l'ensoleillement.
-Vous pouvez empêcher le parasite de se déplacer sur une parcelle si vous la fauchez à temps."
+text = "1. The Orobanche Ramosa is a parasite that KILLS colza
+2. Each turn, the parasite will MOVE to an adjacent square of the field
+3. FIND which squares it prefers by using TOOLS
+4. KILL the parasite by CUTTING or ISOLATING it
+5. Quick! You need to keep most of your field alive!"
+label_settings = SubResource("LabelSettings_3yumr")
 autowrap_mode = 3
 
 [node name="StartGame" type="Button" parent="PanelContainer/CenterContainer/HowToPlay" unique_id=1625365730]
