@@ -9,6 +9,8 @@ extends Node
 @onready var watteringCanIcon : TextureButton = toolsUI.get_node("HBoxContainer/WatteringCan")
 @onready var scoreLabel := $ScoreLabel
 
+@onready var sfxPlayer = $"../SFXplayer"
+
 signal newToolSelected(newTool:  Player.tool)
 signal nextTurnPressed()
 signal restartButtonPressed()
@@ -30,7 +32,10 @@ func _on_scythe_toggled(toggled_on: bool) -> void:
 		newToolSelected.emit( Player.tool.scythe)
 
 func _on_next_turn_pressed() -> void:
+	sfxPlayer.play_sfx(SFXplayer.SFX.ButtonClick)
+	await get_tree().create_timer(0.5).timeout
 	nextTurnPressed.emit()
+	nextTurnButton.hide()
 
 
 func _on_game_game_won() -> void:
@@ -49,11 +54,12 @@ func _on_game_init_game() -> void:
 	gameLostUI.hide()
 	gameWonUI.hide()
 	toolsUI.show() 
-	nextTurnButton.show()
+	nextTurnButton.hide()
 
 
 func _on_player_no_actions_left() -> void:
 	toolsUI.hide()
+	nextTurnButton.show()
 
 
 func _on_game_start_player_turn() -> void:
@@ -68,4 +74,5 @@ func _on_game_score_updated(new_score: int) -> void:
 
 
 func _on_restart_button_pressed() -> void:
+	sfxPlayer.play_sfx(SFXplayer.SFX.ButtonClick)
 	restartButtonPressed.emit()
