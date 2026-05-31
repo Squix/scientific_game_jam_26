@@ -22,9 +22,6 @@ adjustment_enabled = true
 
 [node name="SmallMap" type="Node3D" unique_id=1866678314]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=380702337]
-transform = Transform3D(0.84261227, 0.2393611, 0.4824012, 0, -0.8957894, 0.44447884, 0.5385208, -0.3745233, -0.75480306, 0, 0, 0)
-
 [node name="MainCamera" type="Camera3D" parent="." unique_id=715540611]
 transform = Transform3D(-4.371139e-08, -0.9659258, 0.25881907, 0, 0.25881907, 0.9659258, -1, 4.222196e-08, -1.1313341e-08, 7, 23, 0)
 current = true
