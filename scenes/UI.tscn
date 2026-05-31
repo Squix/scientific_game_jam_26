@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://mucg007wo82o"]
+[gd_scene format=3 uid="uid://y7h2gyhro86k"]
 
 [ext_resource type="Script" uid="uid://cim2bdpsb24l" path="res://script/ui.gd" id="1_dj8aq"]
 [ext_resource type="Texture2D" uid="uid://c6y3bqnbtbd41" path="res://Assets/UI_Tools.png" id="2_75u2n"]
@@ -28,6 +28,9 @@ texture = ExtResource("9_ukj8e")
 
 [sub_resource type="LabelSettings" id="LabelSettings_5en4g"]
 font_size = 32
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5sqrc"]
+texture = ExtResource("9_ukj8e")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7paak"]
 texture = ExtResource("9_ukj8e")
@@ -193,19 +196,27 @@ theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 32
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GameWon/CenterContainer/Panel/MarginContainer" unique_id=1935850183]
+[node name="VBoxContainer2" type="VBoxContainer" parent="GameWon/CenterContainer/Panel/MarginContainer" unique_id=1322122490]
 layout_mode = 2
+theme_override_constants/separation = 16
 alignment = 1
 
-[node name="Title" type="Label" parent="GameWon/CenterContainer/Panel/MarginContainer/VBoxContainer" unique_id=1308980190]
+[node name="VBoxContainer" type="VBoxContainer" parent="GameWon/CenterContainer/Panel/MarginContainer/VBoxContainer2" unique_id=94557169]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="GameWon/CenterContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=1642631701]
 layout_mode = 2
 text = "GAME WON!"
 label_settings = SubResource("LabelSettings_5en4g")
 horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="GameWon/CenterContainer/Panel/MarginContainer/VBoxContainer" unique_id=545045687]
+[node name="Label" type="Label" parent="GameWon/CenterContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=1243370526]
 layout_mode = 2
-text = "You beated the ouro-branche!"
+text = "You've beaten the Orobranche Ramosa!"
+
+[node name="RestartButton" type="Button" parent="GameWon/CenterContainer/Panel/MarginContainer/VBoxContainer2" unique_id=1725991444]
+layout_mode = 2
+text = "RETRY"
 
 [node name="GameLost" type="Control" parent="." unique_id=1175319480]
 visible = false
@@ -226,6 +237,7 @@ grow_vertical = 2
 
 [node name="Panel" type="PanelContainer" parent="GameLost/CenterContainer" unique_id=1700792930]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_5sqrc")
 
 [node name="MarginContainer" type="MarginContainer" parent="GameLost/CenterContainer/Panel" unique_id=649079668]
 layout_mode = 2
@@ -236,17 +248,25 @@ theme_override_constants/margin_bottom = 32
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GameLost/CenterContainer/Panel/MarginContainer" unique_id=1616454845]
 layout_mode = 2
+theme_override_constants/separation = 16
 alignment = 1
 
-[node name="Title" type="Label" parent="GameLost/CenterContainer/Panel/MarginContainer/VBoxContainer" unique_id=1149932152]
+[node name="VBoxContainer" type="VBoxContainer" parent="GameLost/CenterContainer/Panel/MarginContainer/VBoxContainer" unique_id=36265035]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="GameLost/CenterContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1149932152]
 layout_mode = 2
 text = "GAME LOST!"
 label_settings = SubResource("LabelSettings_5en4g")
 horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="GameLost/CenterContainer/Panel/MarginContainer/VBoxContainer" unique_id=1359535400]
+[node name="Label" type="Label" parent="GameLost/CenterContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1359535400]
 layout_mode = 2
-text = "The ouro branche beat you!"
+text = "The Orobranche Ramosa has beaten you!"
+
+[node name="RestartButton" type="Button" parent="GameLost/CenterContainer/Panel/MarginContainer/VBoxContainer" unique_id=1666218793]
+layout_mode = 2
+text = "RETRY"
 
 [node name="ScoreLabel" type="Label" parent="." unique_id=2132654117]
 layout_mode = 0
