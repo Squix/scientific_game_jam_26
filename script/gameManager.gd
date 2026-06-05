@@ -17,10 +17,16 @@ signal reset_game
 var currentState: state = state.PlayerTurn
 var score : int
 
+func _update_score() -> int:
+	score = len(map.getAliveCells())
+	score_updated.emit(score)
+	return score
+
 func _init_game():
-	init_game.emit()
+	
 	score = map.width * map.height
 	score_updated.emit(score)
+	init_game.emit()
 	StartPlayerTurn()
 
 func _ready() -> void:
@@ -58,31 +64,30 @@ func _on_ui_next_turn_pressed() -> void:
 
 
 func _on_parasite_parasite_dead() -> void:
-	game_won.emit(score)
+	var last_score = _update_score()
+	game_won.emit(last_score)
 
 
 func _on_parasite_parasite_turn_ended() -> void:
 	#check if colza field is still healthy
 	if len(map.getAliveCells()) < (map.width * map.height)*HEALTHY_FIELD_THRESHOLD:
 		print("GAME OVER - you LOST")
-		score = len(map.getAliveCells())
+		_update_score()
 		game_lost.emit(score)
 	EndParasiteTurn()
 
 
 func _on_player_parasite_cut() -> void:
-	score = len(map.getAliveCells())
-	game_won.emit(score)
+	var last_score = _update_score()
+	game_won.emit(last_score)
 
 
 func _on_player_colza_cut() -> void:
-	score = len(map.getAliveCells())
-	score_updated.emit(len(map.getAliveCells()))
+	_update_score()
 
 
 func _on_parasite_parasite_cut_colza() -> void:
-	score = len(map.getAliveCells())
-	score_updated.emit(len(map.getAliveCells()))
+	_update_score()
 
 
 func _on_ui_restart_button_pressed() -> void:

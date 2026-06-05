@@ -44,9 +44,11 @@ func useScytheAt(_cell:Cell):
 	sfxPlayer.play_sfx(SFXplayer.SFX.ToolScythe)
 	if _cell.state == Cell.CellState.containParasite:
 		_cell.parasite_dead.show()
+		_cell.CutColza()
 		parasite_cut.emit()
-	_cell.CutColza()
-	colza_cut.emit()
+	else:
+		_cell.CutColza()
+		colza_cut.emit()
 
 func _on_ui_new_tool_selected(newTool: Player.tool) -> void:
 	currentTool = newTool

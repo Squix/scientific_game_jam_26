@@ -25,7 +25,8 @@ func _spawn_parasite():
 	#infect adjacent cell
 	var random_cell_coords = {"x":randi_range(0, field.width-1), "z":randi_range(0, field.height-1)}
 	var random_cell : Cell = field.getCellUnsafe(random_cell_coords.x, random_cell_coords.z)
-	random_cell.set_state(Cell.CellState.dead)
+	random_cell.KillColza()
+	parasite_cut_colza.emit()
 	current_cell = random_cell
 	var adjacent_cell : Cell = _get_target_cell()
 	adjacent_cell.set_state(Cell.CellState.containParasite)
