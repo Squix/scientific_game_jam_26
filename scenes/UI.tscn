@@ -60,6 +60,13 @@ expand_margin_bottom = 32.0
 font = ExtResource("2_aputy")
 font_size = 20
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_flkkw"]
+texture = ExtResource("9_ukj8e")
+expand_margin_left = 12.0
+expand_margin_top = 12.0
+expand_margin_right = 12.0
+expand_margin_bottom = 12.0
+
 [node name="UI" type="Control" unique_id=979071823]
 layout_mode = 3
 anchors_preset = 15
@@ -361,6 +368,11 @@ offset_top = 39.0
 offset_right = 1114.0
 offset_bottom = 70.0
 mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("2_aputy")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxTexture_flkkw")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_flkkw")
+theme_override_styles/hover = SubResource("StyleBoxTexture_flkkw")
 text = "SETTINGS"
 
 [connection signal="pressed" from="CenterContainer/MarginContainer/NextTurn" to="." method="_on_next_turn_pressed"]
