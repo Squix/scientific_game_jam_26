@@ -49,6 +49,9 @@ expand_margin_bottom = 40.0
 [sub_resource type="LabelSettings" id="LabelSettings_75u2n"]
 font_size = 24
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ilk7v"]
+bg_color = Color(0, 0, 0, 0.24705882)
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ilk7v"]
 texture = ExtResource("9_ukj8e")
 expand_margin_left = 32.0
@@ -58,7 +61,13 @@ expand_margin_bottom = 32.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_ilk7v"]
 font = ExtResource("2_aputy")
-font_size = 20
+font_size = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7paak"]
+bg_color = Color(0.99215686, 0.76862746, 0.08235294, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5sqrc"]
+bg_color = Color(0.4627451, 0.6627451, 0.24705882, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_flkkw"]
 texture = ExtResource("9_ukj8e")
@@ -317,17 +326,33 @@ text = "Colza restant : 0"
 label_settings = SubResource("LabelSettings_75u2n")
 
 [node name="SettingsDialog" type="Control" parent="." unique_id=1268272158]
-visible = false
-anchors_preset = 0
-offset_left = 472.0
-offset_top = 306.0
-offset_right = 512.0
-offset_bottom = 346.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="SettingsDialog" unique_id=1628496316]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -11.440001
+anchor_top = -7.3430004
+anchor_right = 3.7500002
+anchor_bottom = 4.1730003
+offset_left = 607.5996
+offset_top = 343.7202
+offset_right = -0.00048828125
+offset_bottom = -116.91968
+theme_override_styles/panel = SubResource("StyleBoxFlat_ilk7v")
 
 [node name="CenterContainer" type="CenterContainer" parent="SettingsDialog" unique_id=187822786]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="SettingsDialog/CenterContainer" unique_id=1292459615]
 custom_minimum_size = Vector2(300, 100)
@@ -343,6 +368,7 @@ theme_override_constants/separation = 24
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SettingsDialog/CenterContainer/PanelContainer/CenterContainer/VBoxContainer" unique_id=649535765]
 layout_mode = 2
+theme_override_constants/separation = 16
 
 [node name="Label" type="Label" parent="SettingsDialog/CenterContainer/PanelContainer/CenterContainer/VBoxContainer/HBoxContainer" unique_id=1713534939]
 layout_mode = 2
@@ -353,12 +379,16 @@ label_settings = SubResource("LabelSettings_ilk7v")
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 1
+mouse_default_cursor_shape = 2
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_7paak")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_5sqrc")
 min_value = -5.0
 max_value = 5.0
 step = 0.1
 
 [node name="CloseSettingsButton" type="Button" parent="SettingsDialog/CenterContainer/PanelContainer/CenterContainer/VBoxContainer" unique_id=2023544255]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "CLOSE"
 
 [node name="OpenSettingsMenu" type="Button" parent="." unique_id=1173468371]
