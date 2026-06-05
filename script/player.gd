@@ -28,6 +28,7 @@ func end_turn():
 func useWatteringCanAt(_cell:Cell):
 	sfxPlayer.play_sfx(SFXplayer.SFX.ToolWatteringCan)
 	_cell.setWaterLevelToMax()
+	remainingAction -= 1
 
 func useMagnifyingGlassAt(cell:Cell):
 	cell.open_colza()
@@ -35,12 +36,14 @@ func useMagnifyingGlassAt(cell:Cell):
 		sfxPlayer.play_sfx(SFXplayer.SFX.ParasiteUncovered)
 	else:
 		sfxPlayer.play_sfx(SFXplayer.SFX.ToolMagnifyingGlass)
-
+	remainingAction -= 1
 
 func useTreeAt(_cell:Cell):
 	pass
 
 func useScytheAt(_cell:Cell):
+	if _cell.state == Cell.CellState.dead or _cell.state == Cell.CellState.cut:
+		return
 	sfxPlayer.play_sfx(SFXplayer.SFX.ToolScythe)
 	if _cell.state == Cell.CellState.containParasite:
 		_cell.parasite_dead.show()
@@ -49,6 +52,7 @@ func useScytheAt(_cell:Cell):
 	else:
 		_cell.CutColza()
 		colza_cut.emit()
+	remainingAction -= 1
 
 func _on_ui_new_tool_selected(newTool: Player.tool) -> void:
 	currentTool = newTool
@@ -82,7 +86,6 @@ func _on_player_input_map_clicked(_worldPosition: Vector3) -> void:
 			useMagnifyingGlassAt(cell)
 		Player.tool.tree:
 			useTreeAt(cell)
-	
-	remainingAction -= 1
+
 	if(remainingAction <= 0):
 		no_actions_left.emit()
