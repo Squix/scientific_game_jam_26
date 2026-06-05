@@ -393,10 +393,10 @@ text = "CLOSE"
 
 [node name="OpenSettingsMenu" type="Button" parent="." unique_id=1173468371]
 layout_mode = 0
-offset_left = 1032.0
-offset_top = 39.0
-offset_right = 1114.0
-offset_bottom = 70.0
+offset_left = 997.0
+offset_top = 35.0
+offset_right = 1079.0
+offset_bottom = 66.0
 mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("2_aputy")
 theme_override_font_sizes/font_size = 24
