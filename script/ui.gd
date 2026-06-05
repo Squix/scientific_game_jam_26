@@ -39,23 +39,27 @@ func _on_next_turn_pressed() -> void:
 	nextTurnButton.hide()
 
 
-func _on_game_game_won() -> void:
+func _on_game_game_won(score: int) -> void:
 	gameOverUI.set_title("Game won!")
 	gameOverUI.set_label("You've beaten the Orobanche Ramosa!")
+	gameOverUI.set_score_label("You saved {0} plants!".format([score]))
+	gameOverUI.show_score()
 	gameOverUI.show()
 	toolsUI.hide()
 	nextTurnButton.hide()
 
 
-func _on_game_game_lost() -> void:
+func _on_game_game_lost(_score: int) -> void:
 	gameOverUI.set_title("Game lost!")
 	gameOverUI.set_label("The Orobanche Ramosa has beaten you!")
+	gameOverUI.hide_score()
 	gameOverUI.show()
 	toolsUI.hide()
 	nextTurnButton.hide()
 
 
 func _on_game_init_game() -> void:
+	gameOverUI.hide_score()
 	gameOverUI.hide()
 	toolsUI.show() 
 	nextTurnButton.hide()

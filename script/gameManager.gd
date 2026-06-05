@@ -5,8 +5,8 @@ enum state {PlayerTurn, ParasiteTurn, GameOver}
 signal init_game
 signal start_parasite_turn
 signal start_player_turn
-signal game_won()
-signal game_lost()
+signal game_won(score: int)
+signal game_lost(score: int)
 signal score_updated(new_score:int)
 signal reset_game
 
@@ -15,11 +15,12 @@ signal reset_game
 @export var HEALTHY_FIELD_THRESHOLD = 0.5
 
 var currentState: state = state.PlayerTurn
+var score : int
 
 func _init_game():
 	init_game.emit()
-	var new_score = map.width * map.height
-	score_updated.emit(new_score)
+	score = map.width * map.height
+	score_updated.emit(score)
 	StartPlayerTurn()
 
 func _ready() -> void:
@@ -57,26 +58,30 @@ func _on_ui_next_turn_pressed() -> void:
 
 
 func _on_parasite_parasite_dead() -> void:
-	game_won.emit()
+	game_won.emit(score)
 
 
 func _on_parasite_parasite_turn_ended() -> void:
 	#check if colza field is still healthy
 	if len(map.getAliveCells()) < (map.width * map.height)*HEALTHY_FIELD_THRESHOLD:
 		print("GAME OVER - you LOST")
-		game_lost.emit()
+		score = len(map.getAliveCells())
+		game_lost.emit(score)
 	EndParasiteTurn()
 
 
 func _on_player_parasite_cut() -> void:
-	game_won.emit()
+	score = len(map.getAliveCells())
+	game_won.emit(score)
 
 
 func _on_player_colza_cut() -> void:
+	score = len(map.getAliveCells())
 	score_updated.emit(len(map.getAliveCells()))
 
 
 func _on_parasite_parasite_cut_colza() -> void:
+	score = len(map.getAliveCells())
 	score_updated.emit(len(map.getAliveCells()))
 
 

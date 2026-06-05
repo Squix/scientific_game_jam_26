@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://c22rdsfkgs2e" path="res://Assets/Tool_Faux_selected.png" id="8_ukj8e"]
 [ext_resource type="Texture2D" uid="uid://bvolun812r6y0" path="res://Assets/UI_Frame.png" id="9_ukj8e"]
 [ext_resource type="Script" uid="uid://dswb6v161uowv" path="res://script/ui/game_over_ui.gd" id="13_5sqrc"]
+[ext_resource type="Texture2D" uid="uid://deyg3odcgfk1p" path="res://Assets/UI_Colza.png" id="14_ilk7v"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7paak"]
 texture = ExtResource("9_ukj8e")
@@ -41,16 +42,6 @@ expand_margin_bottom = 30.0
 [sub_resource type="ButtonGroup" id="ButtonGroup_dj8aq"]
 resource_name = "Tool"
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w7enk"]
-texture = ExtResource("9_ukj8e")
-
-[sub_resource type="LabelSettings" id="LabelSettings_5en4g"]
-font = ExtResource("2_aputy")
-font_size = 48
-
-[sub_resource type="LabelSettings" id="LabelSettings_5sqrc"]
-font = ExtResource("2_aputy")
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ilk7v"]
 bg_color = Color(0, 0, 0, 0.24705882)
 
@@ -77,6 +68,10 @@ expand_margin_left = 16.0
 expand_margin_top = 16.0
 expand_margin_right = 16.0
 expand_margin_bottom = 16.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_5en4g"]
+font = ExtResource("2_aputy")
+font_size = 48
 
 [sub_resource type="LabelSettings" id="LabelSettings_7paak"]
 font_size = 20
@@ -237,60 +232,6 @@ texture_hover = ExtResource("8_ukj8e")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="GameWon" type="Control" parent="." unique_id=1045635620]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="CenterContainer" type="CenterContainer" parent="GameWon" unique_id=624630472]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Panel" type="PanelContainer" parent="GameWon/CenterContainer" unique_id=1652986114]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_w7enk")
-
-[node name="MarginContainer" type="MarginContainer" parent="GameWon/CenterContainer/Panel" unique_id=94266173]
-layout_mode = 2
-theme_override_constants/margin_left = 32
-theme_override_constants/margin_top = 32
-theme_override_constants/margin_right = 32
-theme_override_constants/margin_bottom = 32
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="GameWon/CenterContainer/Panel/MarginContainer" unique_id=1322122490]
-layout_mode = 2
-theme_override_constants/separation = 16
-alignment = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="GameWon/CenterContainer/Panel/MarginContainer/VBoxContainer2" unique_id=94557169]
-layout_mode = 2
-
-[node name="Title" type="Label" parent="GameWon/CenterContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=1642631701]
-layout_mode = 2
-text = "GAME WON!"
-label_settings = SubResource("LabelSettings_5en4g")
-horizontal_alignment = 1
-
-[node name="Label" type="Label" parent="GameWon/CenterContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=1243370526]
-layout_mode = 2
-text = "You've beaten the Orobanche Ramosa!"
-label_settings = SubResource("LabelSettings_5sqrc")
-
-[node name="RestartButton" type="Button" parent="GameWon/CenterContainer/Panel/MarginContainer/VBoxContainer2" unique_id=1725991444]
-layout_mode = 2
-mouse_default_cursor_shape = 2
-theme_override_fonts/font = ExtResource("2_aputy")
-theme_override_font_sizes/font_size = 30
-text = "RETRY"
-
 [node name="SettingsDialog" type="Control" parent="." unique_id=1268272158]
 visible = false
 layout_mode = 1
@@ -406,16 +347,37 @@ alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GameOver/CenterContainer/Panel/MarginContainer/VBoxContainer" unique_id=36265035]
 layout_mode = 2
+theme_override_constants/separation = 16
 
-[node name="Title" type="Label" parent="GameOver/CenterContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1149932152]
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOver/CenterContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1797447055]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="GameOver/CenterContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer" unique_id=1149932152]
 layout_mode = 2
 text = "GAME LOST!"
 label_settings = SubResource("LabelSettings_5en4g")
 horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="GameOver/CenterContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1359535400]
+[node name="Label" type="Label" parent="GameOver/CenterContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer" unique_id=1359535400]
 layout_mode = 2
 text = "The Orobanche Ramosa has beaten you!"
+label_settings = SubResource("LabelSettings_7paak")
+
+[node name="ScoreContainer" type="HBoxContainer" parent="GameOver/CenterContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer" unique_id=2049203597]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="GameOver/CenterContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/ScoreContainer" unique_id=1079928069]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("14_ilk7v")
+expand_mode = 3
+
+[node name="Score" type="Label" parent="GameOver/CenterContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/ScoreContainer" unique_id=1348457684]
+layout_mode = 2
+text = "You saved {X} plants"
 label_settings = SubResource("LabelSettings_7paak")
 
 [node name="RestartButton" type="Button" parent="GameOver/CenterContainer/Panel/MarginContainer/VBoxContainer" unique_id=1666218793]
@@ -433,7 +395,6 @@ text = "RETRY"
 [connection signal="toggled" from="Tools/HBoxContainer/MagnifyingGlass" to="." method="_on_magnifying_glass_toggled"]
 [connection signal="toggled" from="Tools/HBoxContainer/Tree" to="." method="_on_tree_toggled"]
 [connection signal="toggled" from="Tools/HBoxContainer/Scythe" to="." method="_on_scythe_toggled"]
-[connection signal="pressed" from="GameWon/CenterContainer/Panel/MarginContainer/VBoxContainer2/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="value_changed" from="SettingsDialog/CenterContainer/PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/MusicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]
 [connection signal="pressed" from="SettingsDialog/CenterContainer/PanelContainer/CenterContainer/VBoxContainer/CloseSettingsButton" to="." method="_on_close_settings_button_pressed"]
 [connection signal="pressed" from="GameOver/CenterContainer/Panel/MarginContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
