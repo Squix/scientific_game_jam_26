@@ -2,8 +2,7 @@ class_name UI
 
 extends Node
 
-@onready var gameWonUI := $GameWon
-@onready var gameLostUI := $GameLost
+@onready var gameOverUI : GameOverUI = $GameOver
 @onready var nextTurnButton := $CenterContainer/MarginContainer/NextTurn
 @onready var toolsUI := $Tools
 @onready var watteringCanIcon : TextureButton = toolsUI.get_node("HBoxContainer/WatteringCan")
@@ -41,20 +40,23 @@ func _on_next_turn_pressed() -> void:
 
 
 func _on_game_game_won() -> void:
-	gameWonUI.show()
+	gameOverUI.set_title("Game won!")
+	gameOverUI.set_label("You've beaten the Orobanche Ramosa!")
+	gameOverUI.show()
 	toolsUI.hide()
 	nextTurnButton.hide()
 
 
 func _on_game_game_lost() -> void:
-	gameLostUI.show()
+	gameOverUI.set_title("Game lost!")
+	gameOverUI.set_label("The Orobanche Ramosa has beaten you!")
+	gameOverUI.show()
 	toolsUI.hide()
 	nextTurnButton.hide()
 
 
 func _on_game_init_game() -> void:
-	gameLostUI.hide()
-	gameWonUI.hide()
+	gameOverUI.hide()
 	toolsUI.show() 
 	nextTurnButton.hide()
 	settingsUI.hide()
