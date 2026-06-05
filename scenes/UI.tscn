@@ -87,6 +87,7 @@ theme_override_constants/margin_right = 50
 
 [node name="NextTurn" type="Button" parent="CenterContainer/MarginContainer" unique_id=661208156]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("2_aputy")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxTexture_aputy")
@@ -143,6 +144,7 @@ alignment = 1
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_vertical = 4
+mouse_default_cursor_shape = 2
 toggle_mode = true
 button_group = SubResource("ButtonGroup_dj8aq")
 texture_normal = ExtResource("3_w7enk")
@@ -155,6 +157,7 @@ stretch_mode = 5
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_vertical = 4
+mouse_default_cursor_shape = 2
 toggle_mode = true
 button_group = SubResource("ButtonGroup_dj8aq")
 texture_normal = ExtResource("3_75u2n")
@@ -168,6 +171,7 @@ visible = false
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_vertical = 4
+mouse_default_cursor_shape = 2
 toggle_mode = true
 button_group = SubResource("ButtonGroup_dj8aq")
 texture_normal = ExtResource("2_ro3t7")
@@ -178,6 +182,7 @@ stretch_mode = 5
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_vertical = 4
+mouse_default_cursor_shape = 2
 toggle_mode = true
 button_group = SubResource("ButtonGroup_dj8aq")
 texture_normal = ExtResource("4_ua6yw")
@@ -235,6 +240,7 @@ label_settings = SubResource("LabelSettings_5sqrc")
 
 [node name="RestartButton" type="Button" parent="GameWon/CenterContainer/Panel/MarginContainer/VBoxContainer2" unique_id=1725991444]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("2_aputy")
 theme_override_font_sizes/font_size = 30
 text = "RETRY"
@@ -287,6 +293,7 @@ label_settings = SubResource("LabelSettings_7paak")
 
 [node name="RestartButton" type="Button" parent="GameLost/CenterContainer/Panel/MarginContainer/VBoxContainer" unique_id=1666218793]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("2_aputy")
 theme_override_font_sizes/font_size = 30
 text = "RETRY"
@@ -353,6 +360,7 @@ offset_left = 1032.0
 offset_top = 39.0
 offset_right = 1114.0
 offset_bottom = 70.0
+mouse_default_cursor_shape = 2
 text = "SETTINGS"
 
 [connection signal="pressed" from="CenterContainer/MarginContainer/NextTurn" to="." method="_on_next_turn_pressed"]
