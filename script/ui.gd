@@ -6,7 +6,7 @@ extends Node
 @onready var nextTurnButton := $CenterContainer/MarginContainer/NextTurn
 @onready var toolsUI := $Tools
 @onready var watteringCanIcon : TextureButton = toolsUI.get_node("HBoxContainer/WatteringCan")
-@onready var scoreLabel := $ScoreLabel
+@onready var scoreLabel := $Score/PanelContainer/ScoreContainer/ScoreLabel
 
 @onready var settingsUI = $SettingsDialog
 
@@ -79,7 +79,7 @@ func _on_game_start_player_turn() -> void:
 
 
 func _on_game_score_updated(new_score: int) -> void:
-	scoreLabel.text = "Remaining colza: {0}".format([new_score])
+	scoreLabel.text = "{0} / 35".format([new_score])
 
 
 func _on_restart_button_pressed() -> void:

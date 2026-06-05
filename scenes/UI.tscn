@@ -15,22 +15,18 @@
 [ext_resource type="Script" uid="uid://dswb6v161uowv" path="res://script/ui/game_over_ui.gd" id="13_5sqrc"]
 [ext_resource type="Texture2D" uid="uid://deyg3odcgfk1p" path="res://Assets/UI_Colza.png" id="14_ilk7v"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7paak"]
-texture = ExtResource("9_ukj8e")
-expand_margin_left = 40.0
-expand_margin_top = 40.0
-expand_margin_right = 40.0
-expand_margin_bottom = 40.0
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ilk7v"]
+load_path = "res://.godot/imported/UI_Frame.png-ffcc82f255bfec347b9665d7c128f08a.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mhjpf"]
+texture = SubResource("CompressedTexture2D_ilk7v")
+expand_margin_left = 20.0
+expand_margin_top = 20.0
+expand_margin_right = 20.0
+expand_margin_bottom = 20.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_75u2n"]
-font_size = 24
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_flkkw"]
-texture = ExtResource("9_ukj8e")
-expand_margin_left = 12.0
-expand_margin_top = 12.0
-expand_margin_right = 12.0
-expand_margin_bottom = 12.0
+font_size = 42
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_aputy"]
 texture = ExtResource("2_w7enk")
@@ -38,6 +34,13 @@ expand_margin_left = 30.0
 expand_margin_top = 30.0
 expand_margin_right = 50.0
 expand_margin_bottom = 30.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_flkkw"]
+texture = ExtResource("9_ukj8e")
+expand_margin_left = 12.0
+expand_margin_top = 12.0
+expand_margin_right = 12.0
+expand_margin_bottom = 12.0
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_dj8aq"]
 resource_name = "Tool"
@@ -85,30 +88,34 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dj8aq")
 
-[node name="ScoreLabel" type="Label" parent="." unique_id=2132654117]
-layout_mode = 0
-offset_left = 103.0
-offset_top = 112.0
-offset_right = 238.0
-offset_bottom = 139.0
-theme_override_fonts/font = ExtResource("2_aputy")
-theme_override_styles/normal = SubResource("StyleBoxTexture_7paak")
-text = "Colza restant : 0"
-label_settings = SubResource("LabelSettings_75u2n")
+[node name="Score" type="Control" parent="." unique_id=1423201446]
+anchors_preset = 0
+offset_left = 66.0
+offset_top = 91.0
+offset_right = 106.0
+offset_bottom = 131.0
 
-[node name="OpenSettingsMenu" type="Button" parent="." unique_id=1173468371]
+[node name="PanelContainer" type="PanelContainer" parent="Score" unique_id=1749811192]
 layout_mode = 0
-offset_left = 997.0
-offset_top = 35.0
-offset_right = 1079.0
-offset_bottom = 66.0
-mouse_default_cursor_shape = 2
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_mhjpf")
+
+[node name="ScoreContainer" type="HBoxContainer" parent="Score/PanelContainer" unique_id=914349394]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TextureRect" type="TextureRect" parent="Score/PanelContainer/ScoreContainer" unique_id=1137219321]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("14_ilk7v")
+expand_mode = 3
+
+[node name="ScoreLabel" type="Label" parent="Score/PanelContainer/ScoreContainer" unique_id=2132654117]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("2_aputy")
-theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = SubResource("StyleBoxTexture_flkkw")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_flkkw")
-theme_override_styles/hover = SubResource("StyleBoxTexture_flkkw")
-text = "SETTINGS"
+text = "10 / 35"
+label_settings = SubResource("LabelSettings_75u2n")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=1617306652]
 layout_mode = 1
@@ -137,6 +144,20 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_aputy")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_aputy")
 theme_override_styles/focus = SubResource("StyleBoxTexture_aputy")
 text = "NEXT TURN"
+
+[node name="OpenSettingsMenu" type="Button" parent="." unique_id=1173468371]
+layout_mode = 0
+offset_left = 997.0
+offset_top = 89.0
+offset_right = 1079.0
+offset_bottom = 120.0
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("2_aputy")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxTexture_flkkw")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_flkkw")
+theme_override_styles/hover = SubResource("StyleBoxTexture_flkkw")
+text = "SETTINGS"
 
 [node name="Tools" type="Control" parent="." unique_id=39683947]
 layout_mode = 1
@@ -300,6 +321,7 @@ mouse_default_cursor_shape = 2
 text = "CLOSE"
 
 [node name="GameOver" type="Control" parent="." unique_id=1175319480]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -389,8 +411,8 @@ theme_override_fonts/font = ExtResource("2_aputy")
 theme_override_font_sizes/font_size = 30
 text = "RETRY"
 
-[connection signal="pressed" from="OpenSettingsMenu" to="." method="_on_open_settings_menu_pressed"]
 [connection signal="pressed" from="CenterContainer/MarginContainer/NextTurn" to="." method="_on_next_turn_pressed"]
+[connection signal="pressed" from="OpenSettingsMenu" to="." method="_on_open_settings_menu_pressed"]
 [connection signal="toggled" from="Tools/HBoxContainer/WatteringCan" to="." method="_on_wattering_can_toggled"]
 [connection signal="toggled" from="Tools/HBoxContainer/MagnifyingGlass" to="." method="_on_magnifying_glass_toggled"]
 [connection signal="toggled" from="Tools/HBoxContainer/Tree" to="." method="_on_tree_toggled"]
