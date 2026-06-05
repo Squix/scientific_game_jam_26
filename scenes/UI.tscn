@@ -35,15 +35,15 @@ expand_margin_top = 30.0
 expand_margin_right = 50.0
 expand_margin_bottom = 30.0
 
+[sub_resource type="ButtonGroup" id="ButtonGroup_dj8aq"]
+resource_name = "Tool"
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_flkkw"]
 texture = ExtResource("9_ukj8e")
 expand_margin_left = 12.0
 expand_margin_top = 12.0
 expand_margin_right = 12.0
 expand_margin_bottom = 12.0
-
-[sub_resource type="ButtonGroup" id="ButtonGroup_dj8aq"]
-resource_name = "Tool"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ilk7v"]
 bg_color = Color(0, 0, 0, 0.24705882)
@@ -145,20 +145,6 @@ theme_override_styles/disabled = SubResource("StyleBoxTexture_aputy")
 theme_override_styles/focus = SubResource("StyleBoxTexture_aputy")
 text = "NEXT TURN"
 
-[node name="OpenSettingsMenu" type="Button" parent="." unique_id=1173468371]
-layout_mode = 0
-offset_left = 997.0
-offset_top = 89.0
-offset_right = 1079.0
-offset_bottom = 120.0
-mouse_default_cursor_shape = 2
-theme_override_fonts/font = ExtResource("2_aputy")
-theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = SubResource("StyleBoxTexture_flkkw")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_flkkw")
-theme_override_styles/hover = SubResource("StyleBoxTexture_flkkw")
-text = "SETTINGS"
-
 [node name="Tools" type="Control" parent="." unique_id=39683947]
 layout_mode = 1
 anchors_preset = 15
@@ -252,6 +238,20 @@ texture_pressed = ExtResource("8_ukj8e")
 texture_hover = ExtResource("8_ukj8e")
 ignore_texture_size = true
 stretch_mode = 5
+
+[node name="OpenSettingsMenu" type="Button" parent="." unique_id=1173468371]
+layout_mode = 0
+offset_left = 997.0
+offset_top = 89.0
+offset_right = 1079.0
+offset_bottom = 120.0
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("2_aputy")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxTexture_flkkw")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_flkkw")
+theme_override_styles/hover = SubResource("StyleBoxTexture_flkkw")
+text = "SETTINGS"
 
 [node name="SettingsDialog" type="Control" parent="." unique_id=1268272158]
 visible = false
@@ -412,11 +412,11 @@ theme_override_font_sizes/font_size = 30
 text = "RETRY"
 
 [connection signal="pressed" from="CenterContainer/MarginContainer/NextTurn" to="." method="_on_next_turn_pressed"]
-[connection signal="pressed" from="OpenSettingsMenu" to="." method="_on_open_settings_menu_pressed"]
 [connection signal="toggled" from="Tools/HBoxContainer/WatteringCan" to="." method="_on_wattering_can_toggled"]
 [connection signal="toggled" from="Tools/HBoxContainer/MagnifyingGlass" to="." method="_on_magnifying_glass_toggled"]
 [connection signal="toggled" from="Tools/HBoxContainer/Tree" to="." method="_on_tree_toggled"]
 [connection signal="toggled" from="Tools/HBoxContainer/Scythe" to="." method="_on_scythe_toggled"]
+[connection signal="pressed" from="OpenSettingsMenu" to="." method="_on_open_settings_menu_pressed"]
 [connection signal="value_changed" from="SettingsDialog/CenterContainer/PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/MusicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]
 [connection signal="pressed" from="SettingsDialog/CenterContainer/PanelContainer/CenterContainer/VBoxContainer/CloseSettingsButton" to="." method="_on_close_settings_button_pressed"]
 [connection signal="pressed" from="GameOver/CenterContainer/Panel/MarginContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
